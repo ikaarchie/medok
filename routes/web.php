@@ -1,8 +1,9 @@
 <?php
 
 use App\Events\ServerCreated;
-use App\Http\Controllers\DokterOrderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MasterController;
+use App\Http\Controllers\DokterOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,8 @@ Route::get('sedangdiproses/{id}', [DokterOrderController::class, 'sedangdiproses
 Route::get('menunggupengantaran/{id}', [DokterOrderController::class, 'menunggupengantaran'])->name('menunggupengantaran');
 Route::get('sedangdiantar/{id}', [DokterOrderController::class, 'sedangdiantar'])->name('sedangdiantar');
 Route::get('selesai/{id}', [DokterOrderController::class, 'selesai'])->name('selesai');
+
+Route::get('/master', [MasterController::class, 'index'])->name('indexMaster');
+Route::post('/master/add', [MasterController::class, 'add']);
+Route::patch('/master/edit/{id}', [MasterController::class, 'edit'])->name('editMaster');
+Route::get('/master/delete/{id}', [MasterController::class, 'delete'])->name('deleteMaster');

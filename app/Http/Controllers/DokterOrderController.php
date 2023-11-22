@@ -6,16 +6,20 @@ use Carbon\Carbon;
 use App\Models\DokterOrder;
 use Illuminate\Http\Request;
 use App\Events\DokterOrderCreated;
+use App\Models\Master;
 
 class DokterOrderController extends Controller
 {
     public function index(Request $request)
     {
+        $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $minuman = Master::where([['jenis', 'Minuman'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+
         if ($request->expectsJson()) {
             $order_list = DokterOrder::latest()->get();
             return response()->json(['order_list' => $order_list], 200);
         }
-        return view('dokterorder.order_list');
+        return view('dokterorder.order_list', compact('makanan', 'minuman'));
     }
 
     public function create()
