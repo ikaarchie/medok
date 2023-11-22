@@ -17,7 +17,7 @@ class DokterOrderController extends Controller
         }
         return view('dokterorder.order_list');
     }
-    
+
     public function create()
     {
         return view('dokterorder.index');
@@ -37,10 +37,10 @@ class DokterOrderController extends Controller
         $data->sedang_diantar = $request->input('sedang_diantar');
         $data->selesai = $request->input('selesai');
         $data->save();
-        
+
         DokterOrderCreated::dispatch();
 
-        return redirect('/dokterorder/order_list');
+        return redirect('/dokterorder');
     }
 
     public function sedangdiproses(Request $request, $id)

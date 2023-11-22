@@ -43,14 +43,18 @@
                 </td>
                 <td class="text-center">
                     <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
-                        <a :href=`{{ route('sedangdiproses', '' ) }}/${item.id}` id=""
-                            class="btn btn-sm btn-success">Sedang Diproses</a>
-                        <a :href=`{{ route('menunggupengantaran', '' ) }}/${item.id}` id=""
-                            class="btn btn-sm btn-success">Menunggu Pengantaran</a>
-                        <a :href=`{{ route('sedangdiantar', '' ) }}/${item.id}` id=""
-                            class="btn btn-sm btn-success">Sedang Diantar</a>
-                        <a :href=`{{ route('selesai', '' ) }}/${item.id}` id=""
-                            class="btn btn-sm btn-success">Selesai</a>
+                        <a :href=`{{ route('sedangdiproses', '' ) }}/${item.id}`
+                            :class="`${item.sedang_diproses === null ? 'btn btn-sm sedangdiproses' : 'btn btn-sm tombolmati'}`">
+                            Sedang Diproses</a>
+                        <a :href=`{{ route('menunggupengantaran', '' ) }}/${item.id}`
+                            :class="`${item.menunggu_pengantaran === null ? 'btn btn-sm menunggupengantaran' : 'btn btn-sm tombolmati'}`">
+                            Menunggu Pengantaran</a>
+                        <a :href=`{{ route('sedangdiantar', '' ) }}/${item.id}`
+                            :class="`${item.sedang_diantar === null ? 'btn btn-sm sedangdiantar' : 'btn btn-sm tombolmati'}`">
+                            Sedang Diantar</a>
+                        <a :href=`{{ route('selesai', '' ) }}/${item.id}`
+                            :class="`${item.selesai === null ? 'btn btn-sm selesai' : 'btn btn-sm tombolmati'}`">
+                            Selesai</a>
                     </div>
                 </td>
             </tr>
