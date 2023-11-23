@@ -25,19 +25,19 @@
     <div class="d-md-flex justify-content-between">
         <div class="gap-1 d-md-flex justify-content-md-start mt-2">
             <button type="button" data-bs-toggle="modal" data-bs-target="#tambah" class="btn"
-                style="background-color: #FFAB00;">
-                <i class="fa-solid fa-plus"></i><b> Tambah Data</b>
+                style="background-color: #e73c7e;">
+                <i class="text-white fa-solid fa-plus"></i><b class="text-white"> Tambah Data</b>
             </button>
         </div>
 
         <div class="gap-1 d-md-flex justify-content-md-end mt-2">
             <div class="form-group w-10">
                 <div class="input-group">
-                    <input type="text" class="form-control" style="outline: 0.5px solid; outline-color: #FFAB00;"
+                    <input type="text" class="form-control" style="outline: 0.5px solid; outline-color: #e73c7e;"
                         id="myInput" onkeyup="cari()" placeholder="Cari Item">
                     <span class="input-group-text"
-                        style="outline: 0.5px solid; outline-color: #FFAB00; background-color: #FFAB00;">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        style="outline: 0.5px solid; outline-color: #e73c7e; background-color: #e73c7e;">
+                        <i class="text-white fa-solid fa-magnifying-glass"></i>
                     </span>
                 </div>
             </div>
@@ -46,7 +46,7 @@
 
     <div class="table-responsive mt-1 table-data tbl-fixed">
         <table class="table table-bordered border-dark align-middle w-100" id="myTable">
-            <thead class="sticky text-dark text-center align-middle">
+            <thead class="sticky text-white text-center align-middle">
                 <tr>
                     <th style="width:1%">No</th>
                     <th>Item</th>
@@ -55,7 +55,7 @@
                     <th style="width:20%">Aksi</th>
                 </tr>
             </thead>
-            <tbody style=" background-color: #FFECB3">
+            <tbody style=" background-color: #F8BBD0">
                 @php $no = 1; @endphp
                 @forelse($master as $key => $item)
                 <tr>
@@ -106,7 +106,6 @@
         }
     }
 </script>
-
 {{-- fungsi sweet alert --}}
 <script>
     $('.deleteSwal').click(function(){  
@@ -157,7 +156,6 @@
         toastr.success("{{ Session::get('success') }}")
     @endif
 </script>
-
 @endsection
 
 @extends('layouts.footer')

@@ -24,7 +24,21 @@ class DokterOrderController extends Controller
 
     public function create()
     {
-        return view('dokterorder.index');
+        $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $list_makanan =  [];
+        foreach ($makanan as $makan) {
+            $list_makanan[$makan->id] = $makan->item;
+        }
+
+        $minuman = Master::where([['jenis', 'Minuman'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $list_minuman =  [];
+        foreach ($minuman as $minum) {
+            $list_minuman[$minum->id] = $minum->item;
+        }
+
+        $order_list = DokterOrder::latest()->get();
+
+        return view('dokterorder.index', compact('list_makanan', 'list_minuman'));
     }
 
     public function store(Request $request)

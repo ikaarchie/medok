@@ -23,15 +23,15 @@
                 </div>
 
                 <div class="col-sm-12 mb-3 form-floating">
-                    {!! Form::text('makanan', '', ['style' => 'height: auto', 'class' => 'form-control', 'id' =>
-                    'makanan', 'placeholder' => 'Makanan', 'required']) !!}
-                    {!! Form::label('makanan', 'Makanan') !!}
+                    {!! Form::select('makanan', $list_makanan, '', ['style' => 'height: auto', 'class' => 'form-select',
+                    'id' => 'makanan', 'placeholder' => '-- Pilih makanan --','required']) !!}
+                    {!! Form::label('makanan', 'Pilih makanan') !!}
                 </div>
 
                 <div class="col-sm-12 mb-3 form-floating">
-                    {!! Form::text('minuman', '', ['style' => 'height: auto', 'class' => 'form-control', 'id' =>
-                    'minuman', 'placeholder' => 'Minuman', 'required']) !!}
-                    {!! Form::label('minuman', 'Minuman') !!}
+                    {!! Form::select('minuman', $list_minuman, '', ['style' => 'height: auto', 'class' => 'form-select',
+                    'id' => 'minuman', 'placeholder' => '-- Pilih minuman --','required']) !!}
+                    {!! Form::label('minuman', 'Pilih minuman') !!}
                 </div>
             </div>
 

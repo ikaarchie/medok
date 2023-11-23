@@ -22,7 +22,7 @@ use App\Http\Controllers\DokterOrderController;
 //     echo 'tes tes tes';
 // });
 
-Route::get('/dokterorder', [DokterOrderController::class, 'create']);
+Route::get('/dokterorder', [DokterOrderController::class, 'create'])->name('addDokterOrder');
 Route::post('/dokterorder/save', [DokterOrderController::class, 'store'])->name('saveDokterOrder');
 Route::get('/dokterorder/order_list', [DokterOrderController::class, 'index'])->name('listDokterOrder');
 Route::get('sedangdiproses/{id}', [DokterOrderController::class, 'sedangdiproses'])->name('sedangdiproses');
