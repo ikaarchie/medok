@@ -22,7 +22,7 @@ class DokterOrderController extends Controller
         return view('dokterorder.order_list', compact('makanan', 'minuman'));
     }
 
-    public function create()
+    public function add()
     {
         $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
         $list_makanan =  [];
@@ -41,7 +41,7 @@ class DokterOrderController extends Controller
         return view('dokterorder.index', compact('list_makanan', 'list_minuman'));
     }
 
-    public function store(Request $request)
+    public function save(Request $request)
     {
         $data = new DokterOrder();
         $data->nama = $request->input('nama');
