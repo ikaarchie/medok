@@ -108,4 +108,13 @@ class DokterOrderController extends Controller
 
         return redirect('/dokterorder/order_list');
     }
+
+    public function monitoring(Request $request)
+    {
+        if ($request->expectsJson()) {
+            $monitoring = DokterOrder::latest()->get();
+            return response()->json(['monitoring' => $monitoring], 200);
+        }
+        return view('master.data_monitoring');
+    }
 }

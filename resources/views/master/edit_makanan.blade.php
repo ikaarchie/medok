@@ -1,5 +1,5 @@
-<div class="modal fade" id="edit{{$item->id}}" tabindex="-1" data-bs-backdrop="static" aria-labelledby="myModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="editmakanan{{$item->id}}" tabindex="-1" data-bs-backdrop="static"
+    aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,9 +17,8 @@
 
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <div class="col-sm-6 mb-3 form-floating">
-                        {!! Form::select('jenis', [
-                        'Makanan' => 'Makanan', 'Minuman' => 'Minuman'
-                        ], $item->jenis, ['style' => 'height: auto', 'class' => 'form-select', 'id' =>
+                        {!! Form::select('jenis', ['Makanan' => 'Makanan'],
+                        $item->jenis, ['style' => 'height: auto', 'class' => 'form-select', 'id' =>
                         'jenis', 'placeholder' => '-- Pilih jenis item --','required']) !!}
                         {!! Form::label('jenis', 'Jenis Item') !!}
                     </div>

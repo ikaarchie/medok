@@ -9,9 +9,11 @@ class MasterController extends Controller
 {
     public function index()
     {
-        $master = Master::latest('id')->paginate(1000);
+        $makanan = Master::where('jenis', 'Makanan')->orderBy('item', 'ASC')->paginate(1000);
+        $minuman = Master::where('jenis', 'Minuman')->orderBy('item', 'ASC')->paginate(1000);
 
-        return view('master.index')->with('master', $master);
+
+        return view('master.data_menu', compact('makanan', 'minuman'));
     }
 
     public function add(Request $request)

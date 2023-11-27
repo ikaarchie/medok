@@ -1,9 +1,9 @@
-<div class="modal fade" id="tambah" tabindex="-1" data-bs-backdrop="static" aria-labelledby="modalTambah"
+<div class="modal fade" id="tambahminuman" tabindex="-1" data-bs-backdrop="static" aria-labelledby="modalTambahMinuman"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTambah">Tambah Item</h5>
+                <h5 class="modal-title" id="modalTambahMinuman">Tambah Item</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -18,7 +18,7 @@
 
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <div class="col-sm-6 mb-3 form-floating">
-                        {!! Form::select('jenis', ['Makanan' => 'Makanan', 'Minuman' => 'Minuman'], '',
+                        {!! Form::select('jenis', ['Minuman' => 'Minuman'], '',
                         ['style' => 'height: auto', 'class' => 'form-select', 'id' => 'jenis',
                         'placeholder' => '-- Pilih jenis item --','required']) !!}
                         {!! Form::label('jenis', 'Jenis Item') !!}
