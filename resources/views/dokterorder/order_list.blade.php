@@ -44,8 +44,7 @@
                     <td>@{{ item.makanan }}</td>
                     <td>@{{ item.minuman }}</td>
                     <td>@{{ item.waktu_tindakan | tglIndo}}</td>
-                    <td v-if="item.status=='Belum Diproses'" class="text-center text-white"
-                        style="background-color: #D50000;">
+                    <td v-if="item.status=='Belum Diproses'" class="text-center blink">
                         <b>@{{ item.status }}</b>
                     </td>
                     <td v-else-if="item.status=='Sedang Diproses'" class="text-center text-white"
@@ -82,6 +81,12 @@
                 </tr>
             </tbody>
         </table>
+
+        <div v-for="(item,index) in order_list">
+            <audio autoplay v-if="item.status=='Belum Diproses'">
+                <source src="../audio/positive.mp3" type="audio/mp3">
+            </audio>
+        </div>
     </div>
 </div>
 
@@ -114,7 +119,7 @@
 
 <script>
     Vue.filter('tglIndo', function (date) {
-        return moment(date).format('D MMMM Y hh:mm');
+        return moment(date).format('DD/MM/YYYY hh:mm');
     })
 </script>
 
