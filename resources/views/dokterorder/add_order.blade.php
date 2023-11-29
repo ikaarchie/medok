@@ -16,20 +16,32 @@
                     {!! Form::label('nama', 'Nama Dokter') !!}
                 </div>
 
-                <div class="col-sm-12 mb-3 form-floating">
-                    {!! Form::datetimeLocal('waktu_tindakan', '', ['style' => 'height: auto', 'class' => 'form-control',
-                    'id' => 'waktu_tindakan', 'required']) !!}
-                    {!! Form::label('waktu_tindakan', 'Waktu Tindakan') !!}
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <div class="col-sm-6 mb-3 form-floating">
+                        {!! Form::date('tanggal_tindakan', '', ['style' => 'height: auto', 'class' =>
+                        'form-control',
+                        'id' => 'tanggal_tindakan', 'required']) !!}
+                        {!! Form::label('tanggal_tindakan', 'Tanggal Tindakan') !!}
+                    </div>
+
+                    <div class="col-sm-6 mb-3 form-floating">
+                        {!! Form::time('waktu_tindakan', '', ['style' => 'height: auto', 'class' =>
+                        'form-control',
+                        'id' => 'waktu_tindakan', 'required']) !!}
+                        {!! Form::label('waktu_tindakan', 'Waktu Tindakan') !!}
+                    </div>
                 </div>
 
                 <div class="col-sm-12 mb-3 form-floating">
-                    {!! Form::select('makanan', $list_makanan, '', ['style' => 'height: auto', 'class' => 'form-select',
+                    {!! Form::select('makanan', $list_makanan, '', ['style' => 'height: auto', 'class' =>
+                    'form-select',
                     'id' => 'makanan', 'placeholder' => '-- Pilih makanan --','required']) !!}
                     {!! Form::label('makanan', 'Pilih makanan') !!}
                 </div>
 
                 <div class="col-sm-12 mb-3 form-floating">
-                    {!! Form::select('minuman', $list_minuman, '', ['style' => 'height: auto', 'class' => 'form-select',
+                    {!! Form::select('minuman', $list_minuman, '', ['style' => 'height: auto', 'class' =>
+                    'form-select',
                     'id' => 'minuman', 'placeholder' => '-- Pilih minuman --','required']) !!}
                     {!! Form::label('minuman', 'Pilih minuman') !!}
                 </div>

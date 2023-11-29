@@ -28,10 +28,10 @@
                 <tr class="sticky text-light text-center">
                     <th scope="col">No</th>
                     <th scope="col">Nama Dokter</th>
-                    <th scope="col">Waktu Pesanan</th>
                     <th scope="col">Makanan</th>
                     <th scope="col">Minuman</th>
                     <th scope="col">Waktu Tindakan</th>
+                    <th scope="col">Waktu Pesanan</th>
                     <th scope="col">Status Saat Ini</th>
                     <th scope="col">Ubah Status</th>
                 </tr>
@@ -40,10 +40,10 @@
                 <tr v-for="(item,index) in order_list">
                     <td>@{{ index + 1 }}</td>
                     <td>@{{ item.nama }}</td>
-                    <td>@{{ item.belum_diproses | tglIndo}}</td>
                     <td>@{{ item.makanan }}</td>
                     <td>@{{ item.minuman }}</td>
-                    <td>@{{ item.waktu_tindakan | tglIndo}}</td>
+                    <td>@{{ item.tanggal_tindakan | tgl }} @{{ item.waktu_tindakan }}</td>
+                    <td>@{{ item.belum_diproses | tglIndo}}</td>
                     <td v-if="item.status=='Belum Diproses'" class="text-center blink">
                         <b>@{{ item.status }}</b>
                     </td>
@@ -84,7 +84,7 @@
 
         <div v-for="(item,index) in order_list">
             <audio autoplay v-if="item.status=='Belum Diproses'">
-                <source src="../audio/positive.mp3" type="audio/mp3">
+                <source src="../public/audio/positive.mp3" type="audio/mp3">
             </audio>
         </div>
     </div>
@@ -118,8 +118,11 @@
 </script>
 
 <script>
+    Vue.filter('tgl', function (date) {
+        return moment(date).format('DD/MM/YYYY');
+    })
     Vue.filter('tglIndo', function (date) {
-        return moment(date).format('DD/MM/YYYY hh:mm');
+        return moment(date).format('DD/MM/YYYY HH:mm');
     })
 </script>
 

@@ -7,6 +7,7 @@ use App\Models\DokterOrder;
 use Illuminate\Http\Request;
 use App\Events\DokterOrderCreated;
 use App\Models\Master;
+use Illuminate\Support\Facades\DB;
 
 class DokterOrderController extends Controller
 {
@@ -45,6 +46,7 @@ class DokterOrderController extends Controller
     {
         $data = new DokterOrder();
         $data->nama = $request->input('nama');
+        $data->tanggal_tindakan = $request->input('tanggal_tindakan');
         $data->waktu_tindakan = $request->input('waktu_tindakan');
         $data->makanan = $request->input('makanan');
         $data->minuman = $request->input('minuman');
@@ -70,7 +72,7 @@ class DokterOrderController extends Controller
 
         DokterOrderCreated::dispatch();
 
-        return redirect('/dokterorder/order_list');
+        return redirect('/orderlist');
     }
 
     public function menunggupengantaran(Request $request, $id)
@@ -82,7 +84,7 @@ class DokterOrderController extends Controller
 
         DokterOrderCreated::dispatch();
 
-        return redirect('/dokterorder/order_list');
+        return redirect('/orderlist');
     }
 
     public function sedangdiantar(Request $request, $id)
@@ -94,7 +96,7 @@ class DokterOrderController extends Controller
 
         DokterOrderCreated::dispatch();
 
-        return redirect('/dokterorder/order_list');
+        return redirect('/orderlist');
     }
 
     public function selesai(Request $request, $id)
@@ -106,7 +108,7 @@ class DokterOrderController extends Controller
 
         DokterOrderCreated::dispatch();
 
-        return redirect('/dokterorder/order_list');
+        return redirect('/orderlist');
     }
 
     public function monitoring(Request $request)
@@ -116,5 +118,25 @@ class DokterOrderController extends Controller
             return response()->json(['monitoring' => $monitoring], 200);
         }
         return view('master.data_monitoring');
+    }
+
+    public function tracking(Request $request)
+    {
+        $query = DokterOrder::query();
+        // $terbaru = DokterOrder::max('id');
+        $dokter = DokterOrder::select('nama')->orderBy('nama', 'ASC')->distinct()->get();
+
+        // $coba = DokterOrder::where('nama', 'Ranger Emas')->latest()->first();
+        // dd($coba);
+
+        if ($request->ajax()) {
+            $tracking = $query->where(['nama' => $request->dokter])
+                ->get();
+            return response()->json(['tracking' => $tracking], 200);
+        }
+
+        $tracking = $query->paginate(1000);
+
+        return view('dokterorder.tracking', compact('dokter', 'tracking'));
     }
 }

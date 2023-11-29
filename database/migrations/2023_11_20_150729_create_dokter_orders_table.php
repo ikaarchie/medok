@@ -16,6 +16,7 @@ class CreateDokterOrdersTable extends Migration
         Schema::create('dokter_orders', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('tanggal_tindakan');
             $table->string('waktu_tindakan');
             $table->string('makanan');
             $table->string('minuman');
