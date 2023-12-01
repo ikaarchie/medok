@@ -3,7 +3,7 @@
 @section('masterContent')
 
 <div class="d-grid gap-1 d-flex justify-content-center">
-    <div class="container justify-content-center bg-white p-5">
+    <div class="container justify-content-center bg-white">
         <div class="d-md-flex justify-content-between">
             <div class="gap-1 d-md-flex justify-content-md-start mt-2">
                 <button type="button" data-bs-toggle="modal" data-bs-target="#tambahmakanan" class="btn"
@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div class="container justify-content-center bg-white p-5">
+    <div class="container justify-content-center bg-white">
         <div class="d-md-flex justify-content-between">
             <div class="gap-1 d-md-flex justify-content-md-start mt-2">
                 <button type="button" data-bs-toggle="modal" data-bs-target="#tambahminuman" class="btn"
