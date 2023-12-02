@@ -173,25 +173,6 @@
     })
 </script>
 
-<script>
-    // function updateStatus(id, status)
-    // {
-    // var route = '';
-    // if (status == 1) {
-    // route = "sedangdiproses/" + id ;
-    // }
-    // if (status == 2) {
-    // route = "menunggupengantaran/" + id ;
-    // }
-    // if (status == 3) {
-    // route = "sedangdiantar/" + id ;
-    // }
-    // if (status == 4) {
-    // route = "selesai/" + id ;
-    // }
-    // }
-</script>
-
 <script src="{{ asset('js/app.js') }}"></script>
 
 <script>

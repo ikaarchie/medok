@@ -17,6 +17,7 @@ class CreateMastersTable extends Migration
             $table->id();
             $table->string('item');
             $table->string('jenis');
+            $table->string('keterangan');
             $table->string('status');
             $table->timestamps();
         });

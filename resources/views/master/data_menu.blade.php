@@ -32,7 +32,8 @@
                     <tr>
                         <th style="width:1%">No</th>
                         <th>Makanan</th>
-                        <th>Status</th>
+                        <th style="width:20%">Keterangan<br>Pedas / Tidak pedas</th>
+                        <th style="width:15%">Status</th>
                         <th style="width:20%">Aksi</th>
                     </tr>
                 </thead>
@@ -42,6 +43,7 @@
                     <tr>
                         <td>{{ $makanan->firstItem() + $key }}</td>
                         <td>{{ $item->item }}</td>
+                        <td>{{ $item->keterangan }}</td>
                         <td>{{ $item->status }}</td>
                         <td>
                             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -92,7 +94,8 @@
                     <tr>
                         <th style="width:1%">No</th>
                         <th>Minuman</th>
-                        <th>Status</th>
+                        <th style="width:20%">Keterangan<br>Panas / Dingin</th>
+                        <th style="width:15%">Status</th>
                         <th style="width:20%">Aksi</th>
                     </tr>
                 </thead>
@@ -102,6 +105,7 @@
                     <tr>
                         <td>{{ $minuman->firstItem() + $key }}</td>
                         <td>{{ $item->item }}</td>
+                        <td>{{ $item->keterangan }}</td>
                         <td>{{ $item->status }}</td>
                         <td>
                             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">

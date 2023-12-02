@@ -15,21 +15,26 @@
                     {!! Form::label('item', 'Item') !!}
                 </div>
 
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <div class="col-sm-6 mb-3 form-floating">
-                        {!! Form::select('jenis', ['Minuman' => 'Minuman'],
-                        $item->jenis, ['style' => 'height: auto', 'class' => 'form-select', 'id' =>
-                        'jenis', 'placeholder' => '-- Pilih jenis item --','required']) !!}
-                        {!! Form::label('jenis', 'Jenis Item') !!}
-                    </div>
+                <div class="col-sm-12 mb-3 form-floating">
+                    {!! Form::select('jenis', ['Minuman' => 'Minuman'],
+                    $item->jenis, ['style' => 'height: auto', 'class' => 'form-select', 'id' =>
+                    'jenis', 'placeholder' => '-- Pilih jenis item --','required']) !!}
+                    {!! Form::label('jenis', 'Jenis Item') !!}
+                </div>
 
-                    <div class="col-sm-6 mb-3 form-floating">
-                        {!! Form::select('status', [
-                        'Aktif' => 'Aktif', 'Nonaktif' => 'Nonaktif'
-                        ], $item->status, ['style' => 'height: auto', 'class' => 'form-select', 'id' =>
-                        'status', 'placeholder' => '-- Pilih status item --','required']) !!}
-                        {!! Form::label('status', 'Status Item') !!}
-                    </div>
+                <div class="col-sm-12 mb-3 form-floating">
+                    {!! Form::select('keterangan', ['Aktif' => 'Aktif', 'Nonaktif' => 'Nonaktif'], $item->keterangan,
+                    ['style' => 'height: auto', 'class' => 'form-select', 'id' => 'keterangan',
+                    'placeholder' => '-- Pilih keterangan item --','required']) !!}
+                    {!! Form::label('keterangan', 'Keterangan Item') !!}
+                </div>
+
+                <div class="col-sm-12 mb-3 form-floating">
+                    {!! Form::select('status', [
+                    'Aktif' => 'Aktif', 'Nonaktif' => 'Nonaktif'
+                    ], $item->status, ['style' => 'height: auto', 'class' => 'form-select', 'id' =>
+                    'status', 'placeholder' => '-- Pilih status item --','required']) !!}
+                    {!! Form::label('status', 'Status Item') !!}
                 </div>
             </div>
             <div class="modal-footer">

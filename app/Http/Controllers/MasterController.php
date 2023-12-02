@@ -21,6 +21,7 @@ class MasterController extends Controller
         $data = new Master();
         $data->item = $request->input('item');
         $data->jenis = $request->input('jenis');
+        $data->keterangan = $request->input('keterangan');
         $data->status = $request->input('status');
         $data->save();
 
