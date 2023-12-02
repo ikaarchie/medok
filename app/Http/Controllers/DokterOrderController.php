@@ -15,12 +15,13 @@ class DokterOrderController extends Controller
     {
         $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
         $minuman = Master::where([['jenis', 'Minuman'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $order_list = DokterOrder::latest()->get();
 
         if ($request->expectsJson()) {
             $order_list = DokterOrder::latest()->get();
             return response()->json(['order_list' => $order_list], 200);
         }
-        return view('dokterorder.order_list', compact('makanan', 'minuman'));
+        return view('dokterorder.order_list', compact('order_list', 'makanan', 'minuman'));
     }
 
     public function add()
@@ -49,7 +50,9 @@ class DokterOrderController extends Controller
         $data->tanggal_tindakan = $request->input('tanggal_tindakan');
         $data->waktu_tindakan = $request->input('waktu_tindakan');
         $data->makanan = $request->input('makanan');
+        $data->ket_makanan = $request->input('ket_makanan');
         $data->minuman = $request->input('minuman');
+        $data->ket_minuman = $request->input('ket_minuman');
         $data->status = 'Belum Diproses';
         $data->belum_diproses = Carbon::now();
         $data->sedang_diproses = $request->input('sedang_diproses');

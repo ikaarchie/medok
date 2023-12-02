@@ -39,11 +39,17 @@
                     {!! Form::label('makanan', 'Pilih makanan') !!}
                 </div>
 
+                <div id="ket_makanan" class="col-sm-12 mb-3 form-floating" style="display: none;">
+                </div>
+
                 <div class="col-sm-12 mb-3 form-floating">
                     {!! Form::select('minuman', $list_minuman, '', ['style' => 'height: auto', 'class' =>
                     'form-select',
                     'id' => 'minuman', 'placeholder' => '-- Pilih minuman --','required']) !!}
                     {!! Form::label('minuman', 'Pilih minuman') !!}
+                </div>
+
+                <div id="ket_minuman" class="col-sm-12 mb-3 form-floating" style="display: none;">
                 </div>
             </div>
 
@@ -57,3 +63,57 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const makanan = document.getElementById('makanan');
+    const ketMakanan = document.getElementById('ket_makanan');
+    const minuman = document.getElementById('minuman');
+    const ketMinuman = document.getElementById('ket_minuman');
+    
+    makanan.addEventListener('change', function () {
+        // if (opsiUtama.value === '1') {
+    if (['Bihun Goreng', 'Mie Goreng', 'Mie Rebus', 'Nasi Goreng', 'Omelet Kentang', 'Omelet Sosis', 'Telur Ceplok', 'Telur Rebus'].includes(makanan.value)) {
+    // Tampilkan opsi tambahan jika opsi 1 dipilih
+    ketMakanan.innerHTML = 
+    `<div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="ket_makanan" id="pedas" value="pedas" required>
+        <label class="form-check-label text-white" for="pedas"><b>Pedas</b></label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="ket_makanan" id="tidak_pedas" value="tidak pedas" required>
+        <label class="form-check-label text-white" for="tidak_pedas"><b>Tidak pedas</b></label>
+    </div>`;
+    // } else if (makanan.value === 'Buah Potong') {
+    // // Tampilkan opsi tambahan lain jika opsi 2 dipilih
+    // ketMakanan.innerHTML = 
+    // `<input type="checkbox" name="opsi_2_tambahan" value="Nilai1"> Opsi 2 - Nilai 1
+    // <input type="checkbox" name="opsi_2_tambahan" value="Nilai2"> Opsi 2 - Nilai 2`;
+    } else {
+    // Kosongkan opsi tambahan jika opsi lain dipilih
+    ketMakanan.innerHTML = '';
+    }
+    
+    // Tampilkan atau sembunyikan opsi tambahan sesuai dengan pilihan opsi utama
+    ketMakanan.style.display = 'block';
+    });
+    
+    minuman.addEventListener('change', function () {
+    if (['Kopi', 'Kopi Susu', 'Susu Coklat', 'Teh'].includes(minuman.value)) {
+    ketMinuman.innerHTML = 
+    `<div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="ket_minuman" id="dingin" value="dingin">
+        <label class="form-check-label text-white" for="dingin"><b>Dingin</b></label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="ket_minuman" id="panas" value="panas">
+        <label class="form-check-label text-white" for="panas"><b>Panas</b></label>
+    </div>`;
+    } else {
+    ketMinuman.innerHTML = '';
+    }
+    
+    ketMinuman.style.display = 'block';
+    });
+});
+</script>

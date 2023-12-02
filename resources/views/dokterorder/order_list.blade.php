@@ -30,10 +30,10 @@
                     <th scope="col">Nama Dokter</th>
                     <th scope="col">Makanan</th>
                     <th scope="col">Minuman</th>
-                    <th scope="col">Waktu Tindakan</th>
-                    <th scope="col">Waktu Pesanan</th>
-                    <th scope="col">Status Saat Ini</th>
-                    <th scope="col">Ubah Status</th>
+                    <th scope="col" style="width: 8%">Waktu Tindakan</th>
+                    <th scope="col" style="width: 8%">Waktu Pesanan</th>
+                    <th scope="col" style="width: 11%">Status Saat Ini</th>
+                    <th scope="col" style="width: 30%">Ubah Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +62,7 @@
                     <td v-else class="text-center" style="background-color: #00C853;">
                         <b>@{{ item.status }}</b>
                     </td>
-                    <td class="text-center">
+                    {{-- <td class="text-center">
                         <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
                             <a :href=`{{ route('sedangdiproses', '' ) }}/${item.id}`
                                 :class="`${item.sedang_diproses === null ? 'btn sedangdiproses' : 'btn tombolmati'}`">
@@ -76,6 +76,26 @@
                             <a :href=`{{ route('selesai', '' ) }}/${item.id}`
                                 :class="`${item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">
                                 Selesai</a>
+                        </div>
+                    </td> --}}
+
+                    <td class="text-center">
+                        <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 1)"
+                                :id="'sedangdiproses_'+index"
+                                :class="`${item.sedang_diproses === null ? 'btn sedangdiproses' : 'btn tombolmati'}`">Sedang
+                                Diproses</a>
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 2)"
+                                :id="'menunggupengantaran_'+index"
+                                :class="`${item.menunggu_pengantaran === null ? 'btn menunggupengantaran' : 'btn tombolmati'}`">Menunggu
+                                Pengantaran</a>
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 3)"
+                                :id="'sedangdiantar_'+index"
+                                :class="`${item.sedang_diantar === null ? 'btn sedangdiantar' : 'btn tombolmati'}`">Sedang
+                                Diantar</a>
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 4)"
+                                :id="'selesai_'+index"
+                                :class="`${item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">Selesai</a>
                         </div>
                     </td>
                 </tr>
@@ -98,6 +118,7 @@
             },
             mounted() {
                 this.getData();
+                // this.updateStatus();
             },
             methods: {
                 getData: function() {
@@ -112,6 +133,32 @@
                             console.log(err);
                             alert('error');
                         })
+                },
+
+                updateStatus(order_list, id, status)
+                {
+                    var route = '';
+                    if (status == 1) {
+                        route = "sedangdiproses/" + id ;
+                    }
+                    if (status == 2) {
+                        route = "menunggupengantaran/" + id ;
+                    }
+                    if (status == 3) {
+                        route = "sedangdiantar/" + id ;
+                    }
+                    if (status == 4) {
+                        route = "selesai/" + id ;
+                    }
+                    // console.log(order_list, id, status);
+                    $.ajax({
+                        url: route,
+                        type:"GET",
+                        data:{'dokorder_lister' : order_list},
+                        success:function(data){
+                        // updateStatus(order_list, id, status);
+                        }
+                    });
                 }
             }
         })
@@ -124,6 +171,25 @@
     Vue.filter('tglIndo', function (date) {
         return moment(date).format('DD/MM/YYYY HH:mm');
     })
+</script>
+
+<script>
+    // function updateStatus(id, status)
+    // {
+    // var route = '';
+    // if (status == 1) {
+    // route = "sedangdiproses/" + id ;
+    // }
+    // if (status == 2) {
+    // route = "menunggupengantaran/" + id ;
+    // }
+    // if (status == 3) {
+    // route = "sedangdiantar/" + id ;
+    // }
+    // if (status == 4) {
+    // route = "selesai/" + id ;
+    // }
+    // }
 </script>
 
 <script src="{{ asset('js/app.js') }}"></script>
