@@ -39,7 +39,7 @@
                     {!! Form::label('makanan', 'Pilih makanan') !!}
                 </div>
 
-                <div id="ket_makanan" class="col-sm-12 mb-3 form-floating" style="display: none;">
+                <div id="ketMakanan" class="col-sm-12 mb-3 form-floating" style="display: none;">
                 </div>
 
                 <div class="col-sm-12 mb-3 form-floating">
@@ -49,7 +49,7 @@
                     {!! Form::label('minuman', 'Pilih minuman') !!}
                 </div>
 
-                <div id="ket_minuman" class="col-sm-12 mb-3 form-floating" style="display: none;">
+                <div id="ketMinuman" class="col-sm-12 mb-3 form-floating" style="display: none;">
                 </div>
             </div>
 
@@ -63,18 +63,16 @@
         </div>
     </div>
 </div>
-
+{{-- {{ dd($ket_makanan) }} --}}
 <script>
     document.addEventListener('DOMContentLoaded', function () {
     const makanan = document.getElementById('makanan');
-    const ketMakanan = document.getElementById('ket_makanan');
+    const ketMakanan = document.getElementById('ketMakanan');
     const minuman = document.getElementById('minuman');
-    const ketMinuman = document.getElementById('ket_minuman');
+    const ketMinuman = document.getElementById('ketMinuman');
     
     makanan.addEventListener('change', function () {
-        // if (opsiUtama.value === '1') {
-    if (['Bihun Goreng', 'Mie Goreng', 'Mie Rebus', 'Nasi Goreng', 'Omelet Kentang', 'Omelet Sosis', 'Telur Ceplok', 'Telur Rebus'].includes(makanan.value)) {
-    // Tampilkan opsi tambahan jika opsi 1 dipilih
+    if ('<?php echo implode(', ', $ket_makanan); ?>'.split(', ').indexOf(makanan.value) !== -1) {
     ketMakanan.innerHTML = 
     `<div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="ket_makanan" id="pedas" value="pedas" required>
@@ -84,11 +82,6 @@
         <input class="form-check-input" type="radio" name="ket_makanan" id="tidak_pedas" value="tidak pedas" required>
         <label class="form-check-label text-white" for="tidak_pedas"><b>Tidak pedas</b></label>
     </div>`;
-    // } else if (makanan.value === 'Buah Potong') {
-    // // Tampilkan opsi tambahan lain jika opsi 2 dipilih
-    // ketMakanan.innerHTML = 
-    // `<input type="checkbox" name="opsi_2_tambahan" value="Nilai1"> Opsi 2 - Nilai 1
-    // <input type="checkbox" name="opsi_2_tambahan" value="Nilai2"> Opsi 2 - Nilai 2`;
     } else {
     // Kosongkan opsi tambahan jika opsi lain dipilih
     ketMakanan.innerHTML = '';

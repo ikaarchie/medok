@@ -35,7 +35,7 @@ Route::get('/tracking', [DokterOrderController::class, 'tracking'])->name('track
 
 Route::get('/master', [MasterController::class, 'index'])->name('indexMaster');
 Route::post('/master/add', [MasterController::class, 'add']);
-Route::patch('/master/edit/{id}', [MasterController::class, 'edit'])->name('editMaster');
+Route::patch('/master/edit/{id}', [MasterController::class, 'update'])->name('editMaster');
 Route::get('/master/delete/{id}', [MasterController::class, 'delete'])->name('deleteMaster');
 
 Route::get('/monitoring', [DokterOrderController::class, 'monitoring'])->name('monitoringMaster');

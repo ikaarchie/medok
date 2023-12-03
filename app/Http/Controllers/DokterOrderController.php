@@ -38,9 +38,21 @@ class DokterOrderController extends Controller
             $list_minuman[$minum->item] = $minum->item;
         }
 
+        $ketMakanan = Master::select('item')->where([['jenis', 'Makanan'], ['keterangan', 'Aktif'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $ket_makanan =  [];
+        foreach ($ketMakanan as $ket_mkn) {
+            $ket_makanan[$ket_mkn->item] = $ket_mkn->item;
+        }
+
+        $ketMinuman = Master::where([['jenis', 'Minuman'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $ket_minuman =  [];
+        foreach ($ketMinuman as $ket_mnm) {
+            $ket_minuman[$ket_mnm->item] = $ket_mnm->item;
+        }
+
         $order_list = DokterOrder::latest()->get();
 
-        return view('dokterorder.index', compact('list_makanan', 'list_minuman'));
+        return view('dokterorder.index', compact('list_makanan', 'list_minuman', 'ket_makanan', 'ket_minuman'));
     }
 
     public function save(Request $request)

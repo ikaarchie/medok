@@ -36,8 +36,8 @@
                     <tr>
                         <td>{{ $tracking->firstItem() + $key }}</td>
                         <td>{{ $data['nama'] }}</td>
-                        <td>{{ $data['makanan'] }}</td>
-                        <td>{{ $data['minuman'] }}</td>
+                        <td>{{ $data['makanan'] }} {{ $data['ket_makanan'] }}</td>
+                        <td>{{ $data['minuman'] }} {{ $data['ket_minuman'] }}</td>
                         <td>{{ date("d/m/Y hh:mm", strtotime($data['waktu_tindakan'])) }}</td>
                         <td>{{ $data['status'] }}</td>
                     </tr>
@@ -87,8 +87,8 @@
                             html += '<tr>\
                                     <td>'+(i+1)+'</td>\
                                     <td>'+tracking[i]['nama']+'</td>\
-                                    <td>'+tracking[i]['makanan']+'</td>\
-                                    <td>'+tracking[i]['minuman']+'</td>\
+                                    <td>'+tracking[i]['makanan']+' '+tracking[i]['ket_makanan']+'</td>\
+                                    <td>'+tracking[i]['minuman']+' '+tracking[i]['ket_minuman']+'</td>\
                                     <td class="tgl">'+tracking[i]['waktu_tindakan']+'</td>\
                                     <td class="text-center" style="background-color: '+warna+'; color: '+font+'"><b>'+tracking[i]['status']+'</b></td>\
                                 </tr>';

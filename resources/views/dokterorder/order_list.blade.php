@@ -26,7 +26,7 @@
         <table class="table table-bordered table-striped align-middle w-100">
             <thead>
                 <tr class="sticky text-light text-center">
-                    <th scope="col">No</th>
+                    <th scope="col" style="width: 1%">No</th>
                     <th scope="col">Nama Dokter</th>
                     <th scope="col">Makanan</th>
                     <th scope="col">Minuman</th>
@@ -40,8 +40,8 @@
                 <tr v-for="(item,index) in order_list">
                     <td>@{{ index + 1 }}</td>
                     <td>@{{ item.nama }}</td>
-                    <td>@{{ item.makanan }}</td>
-                    <td>@{{ item.minuman }}</td>
+                    <td>@{{ item.makanan }} @{{ item.ket_makanan }}</td>
+                    <td>@{{ item.minuman }} @{{ item.ket_minuman }}</td>
                     <td>@{{ item.tanggal_tindakan | tgl }} @{{ item.waktu_tindakan }}</td>
                     <td>@{{ item.belum_diproses | tglIndo}}</td>
                     <td v-if="item.status=='Belum Diproses'" class="text-center blink">

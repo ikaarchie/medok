@@ -12,6 +12,7 @@ class Master extends Model
     protected $fillable = [
         'item',
         'jenis',
+        'keterangan',
         'status'
     ];
 }

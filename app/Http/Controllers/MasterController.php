@@ -28,7 +28,7 @@ class MasterController extends Controller
         return redirect('/master')->with('success', 'Data berhasil disimpan!');
     }
 
-    public function edit(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $master = Master::find($id);
         $input = $request->all();
