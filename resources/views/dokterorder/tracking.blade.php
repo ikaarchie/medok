@@ -66,7 +66,6 @@
                         for(let i=0; i<tracking.length; i++){
                             var warna = '';
                             var font = '';
-
                             if (tracking[i]['status'] == 'Belum Diproses') {
                                 warna = '#D50000';
                                 font = 'white';
@@ -89,7 +88,7 @@
                                     <td>'+tracking[i]['nama']+'</td>\
                                     <td>'+tracking[i]['makanan']+' '+tracking[i]['ket_makanan']+'</td>\
                                     <td>'+tracking[i]['minuman']+' '+tracking[i]['ket_minuman']+'</td>\
-                                    <td class="tgl">'+tracking[i]['waktu_tindakan']+'</td>\
+                                    <td>'+tracking[i]['tanggal_tindakan']+' '+tracking[i]['waktu_tindakan']+'</td>\
                                     <td class="text-center" style="background-color: '+warna+'; color: '+font+'"><b>'+tracking[i]['status']+'</b></td>\
                                 </tr>';
                         }

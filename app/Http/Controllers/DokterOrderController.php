@@ -138,11 +138,7 @@ class DokterOrderController extends Controller
     public function tracking(Request $request)
     {
         $query = DokterOrder::query();
-        // $terbaru = DokterOrder::max('id');
         $dokter = DokterOrder::select('nama')->orderBy('nama', 'ASC')->distinct()->get();
-
-        // $coba = DokterOrder::where('nama', 'Ranger Emas')->latest()->first();
-        // dd($coba);
 
         if ($request->ajax()) {
             $tracking = $query->where(['nama' => $request->dokter])
