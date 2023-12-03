@@ -19,9 +19,9 @@ class CreateDokterOrdersTable extends Migration
             $table->string('tanggal_tindakan');
             $table->string('waktu_tindakan');
             $table->string('makanan');
-            $table->string('ket_makanan');
+            $table->string('ket_makanan')->nullable();
             $table->string('minuman');
-            $table->string('ket_minuman');
+            $table->string('ket_minuman')->nullable();
             $table->string('status')->nullable()->default('Belum Diproses');
             $table->string('belum_diproses')->nullable();
             $table->string('sedang_diproses')->nullable();

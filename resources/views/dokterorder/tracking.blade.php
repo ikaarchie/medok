@@ -83,14 +83,20 @@
                                 font = 'black';
                             }
 
-                            html += '<tr>\
-                                    <td>'+(i+1)+'</td>\
-                                    <td>'+tracking[i]['nama']+'</td>\
-                                    <td>'+tracking[i]['makanan']+' '+tracking[i]['ket_makanan']+'</td>\
-                                    <td>'+tracking[i]['minuman']+' '+tracking[i]['ket_minuman']+'</td>\
-                                    <td>'+tracking[i]['tanggal_tindakan']+' '+tracking[i]['waktu_tindakan']+'</td>\
-                                    <td class="text-center" style="background-color: '+warna+'; color: '+font+'"><b>'+tracking[i]['status']+'</b></td>\
-                                </tr>';
+                            html += '<tr>';
+                            html += '<td>'+(i+1)+'</td>';
+                            html += '<td>'+tracking[i]['nama']+'</td>';
+                            html += '<td>' + tracking[i]['makanan'];
+                                if (tracking[i]['ket_makanan'] !== null) {
+                                    html += ' ' + tracking[i]['ket_makanan'];
+                                }
+                            html += '<td>' + tracking[i]['minuman'];
+                                if (tracking[i]['ket_minuman'] !== null) {
+                                    html += ' ' + tracking[i]['ket_minuman'];
+                                }
+                            html += '<td>'+tracking[i]['tanggal_tindakan']+' '+tracking[i]['waktu_tindakan']+'</td>';
+                            html += '<td class="text-center" style="background-color: '+warna+'; color: '+font+'"><b>'+tracking[i]['status']+'</b></td>';
+                            html += '</tr>';
                         }
                     } else {
                         html += '<tr>\

@@ -142,6 +142,8 @@ class DokterOrderController extends Controller
 
         if ($request->ajax()) {
             $tracking = $query->where(['nama' => $request->dokter])
+                // ->groupBy('nama')
+                // ->latest('id')
                 ->get();
             return response()->json(['tracking' => $tracking], 200);
         }
