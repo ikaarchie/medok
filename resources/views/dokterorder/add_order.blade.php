@@ -28,7 +28,7 @@
                         {!! Form::time('waktu_tindakan', '', ['style' => 'height: auto', 'class' =>
                         'form-control',
                         'id' => 'waktu_tindakan', 'required']) !!}
-                        {!! Form::label('waktu_tindakan', 'Waktu Tindakan') !!}
+                        {!! Form::label('waktu_tindakan', 'Jam Tindakan') !!}
                     </div>
                 </div>
 
