@@ -3,7 +3,7 @@
 @section('content')
 {{-- {{ dd($coba) }} --}}
 
-<div class="container d-flex justify-content-center align-items-center">
+<div class="container justify-content-center align-items-center mt-5">
     <div class="d-grid gap-2 col-10 mx-auto">
         <a href="{{ url()->previous() }}" type="button" class="btn btn-primary btn-sm col-2">
             <i class="fa-solid fa-angles-left"></i></a>
