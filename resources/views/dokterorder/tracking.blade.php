@@ -3,8 +3,8 @@
 @section('content')
 {{-- {{ dd($coba) }} --}}
 
-<div class="container justify-content-center align-items-center mt-5">
-    <div class="d-grid gap-2 col-10 mx-auto">
+<div class="container justify-content-center align-items-center mt-3">
+    <div class="d-grid gap-2 mx-auto">
         <a href="{{ url()->previous() }}" type="button" class="btn btn-primary btn-sm col-2">
             <i class="fa-solid fa-angles-left"></i></a>
 
@@ -17,93 +17,7 @@
             @endif
         </select>
 
-        {{-- <div id="kartu">
-            @if(count($tracking) > 0)
-            @php $no = 1; @endphp
-            @foreach($tracking as $key => $data)
-            <div class="card mb-2">
-                <div class="card-header">
-                    <div class="gap-1 d-flex justify-content-start">{{ $data['nama'] }}</div>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped-columns align-middle">
-                            <tbody>
-                                <tr>
-                                    <th class="col-2">Makanan</th>
-                                    <td>{{ $data['makanan'] }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-2">Minuman</th>
-                                    <td>{{ $data['minuman'] }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="col-2">Waktu pemesanan</th>
-                                    <td>{{ $data['belum_diproses'] }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                @if($data['status'] == "Belum Diproses")
-                <div class="card-footer text-center blink">
-                    <b>{{ $data['status'] }}</b>
-                </div>
-
-                @elseif($data['status'] == "Sedang Diproses")
-                <div class="card-footer text-center text-white" style="background-color: #FF6D00;">
-                    <b>{{ $data['status'] }}</b>
-                </div>
-
-                @elseif($data['status'] == "Menunggu Pengantaran")
-                <div class="card-footer text-center" style="background-color: #FFAB00;">
-                    <b>{{ $data['status'] }}</b>
-                </div>
-
-                @elseif($data['status'] == "Sedang Diantar")
-                <div class="card-footer text-center" style="background-color: #FFEA00;">
-                    <b>{{ $data['status'] }}</b>
-                </div>
-
-                @else
-                <div class="card-footer text-center" style="background-color: #00C853;">
-                    <b>{{ $data['status'] }}</b>
-                </div>
-                @endif
-            </div>
-            @endforeach
-            @endif
-        </div> --}}
-
-        <div class="table-responsive table-data tbl-fixed">
-            <table class="table table-bordered bg-white align-middle" id="tabel" style="display:none">
-                <thead>
-                    <tr class="sticky text-light text-center">
-                        <th>No</th>
-                        <th>Nama Dokter</th>
-                        <th>Makanan</th>
-                        <th>Minuman</th>
-                        <th>Waktu Tindakan</th>
-                        <th>Status Pesanan</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody">
-                    @if(count($tracking) > 0)
-                    @php $no = 1; @endphp
-                    @foreach($tracking as $key => $data)
-                    <tr>
-                        <td>{{ $tracking->firstItem() + $key }}</td>
-                        <td>{{ $data['nama'] }}</td>
-                        <td>{{ $data['makanan'] }} {{ $data['ket_makanan'] }}</td>
-                        <td>{{ $data['minuman'] }} {{ $data['ket_minuman'] }}</td>
-                        <td>{{ date("d/m/Y hh:mm", strtotime($data['waktu_tindakan'])) }}</td>
-                        <td>{{ $data['status'] }}</td>
-                    </tr>
-                    @endforeach
-                    @endif
-                </tbody>
-            </table>
+        <div id="kartu">
         </div>
     </div>
 </div>
@@ -117,7 +31,7 @@
                 type:"GET",
                 data:{'dokter' : filter},
                 success:function(data){
-                    $("#tabel").css({'display': ''});
+                    // $("#tabel").css({'display': ''});
                     var tracking = data.tracking;
                     var html = '';
 
@@ -142,28 +56,45 @@
                                 font = 'black';
                             }
 
+                            html += '<div class="card mb-2">';
+                            html += '<div class="card-header">';
+                            html += '<div class="gap-1 d-flex justify-content-start">'+tracking[i]['nama']+'</div>';
+                            html += '</div>';
+                            html += '<div class="card-body">';
+                            html += '<div class="table-responsive">';
+                            html += '<table class="table table-striped-columns align-middle">';
+                            html += '<tbody>';
                             html += '<tr>';
-                            html += '<td>'+(i+1)+'</td>';
-                            html += '<td>'+tracking[i]['nama']+'</td>';
+                            html += '<th class="col-2">Makanan</th>';
                             html += '<td>' + tracking[i]['makanan'];
                                 if (tracking[i]['ket_makanan'] !== null) {
                                     html += ' ' + tracking[i]['ket_makanan'];
                                 }
+                            html += '</tr>';
+                            html += '<tr>';
+                            html += '<th class="col-2">Minuman</th>';
                             html += '<td>' + tracking[i]['minuman'];
                                 if (tracking[i]['ket_minuman'] !== null) {
                                     html += ' ' + tracking[i]['ket_minuman'];
                                 }
-                            html += '<td>'+tracking[i]['tanggal_tindakan']+' '+tracking[i]['waktu_tindakan']+'</td>';
-                            html += '<td class="text-center" style="background-color: '+warna+'; color: '+font+'"><b>'+tracking[i]['status']+'</b></td>';
                             html += '</tr>';
+                            html += '<tr>';
+                            html += '<th class="col-2">Waktu pemesanan</th>';
+                            html += '<td>'+tracking[i]['belum_diproses']+'</td>';
+                            html += '</tr>';
+                            html += '</tbody>';
+                            html += '</table>';
+                            html += '</div>';
+                            html += '</div>';
+                            html += '<div class="card-footer text-center" style="background-color: '+warna+'; color: '+font+'">';
+                            html += '<b>'+tracking[i]['status']+'</b>';
+                            html += '</td>';
+                            html += '</div>';
+                            html += '</div>';
                         }
-                    } else {
-                        html += '<tr>\
-                                    <td colspan="7" class="bg-danger text-white text-center">Tidak ada data</td>\
-                                </tr>';
                     }
 
-                    $("#tbody").html(html);
+                    $("#kartu").html(html);
                 }
             });
         });
@@ -172,4 +103,4 @@
 
 @endsection
 
-@extends('layouts.footer')
+{{-- @extends('layouts.footer') --}}
