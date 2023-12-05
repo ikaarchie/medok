@@ -27,10 +27,10 @@
             <a class="nav-link {{ Request::is('master') ? 'active' : '' }}" aria-current="page"
                 href="{{ route('indexMaster') }}">Data Menu</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{ Request::is('dokter') ? 'active' : '' }}" href="{{ route('indexDokter') }}">Data
                 Dokter</a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link {{ Request::is('monitoring') ? 'active' : '' }}"
                 href="{{ route('monitoringMaster') }}">Monitoring</a>
