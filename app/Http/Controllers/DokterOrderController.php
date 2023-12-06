@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Dokter;
+use App\Models\Master;
 use App\Models\DokterOrder;
 use Illuminate\Http\Request;
 use App\Events\DokterOrderCreated;
-use App\Models\Dokter;
-use App\Models\Master;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DokterOrderController extends Controller
 {
@@ -22,6 +23,7 @@ class DokterOrderController extends Controller
             $order_list = DokterOrder::latest()->get();
             return response()->json(['order_list' => $order_list], 200);
         }
+
         return view('dokterorder.order_list', compact('order_list', 'makanan', 'minuman'));
     }
 
@@ -81,6 +83,14 @@ class DokterOrderController extends Controller
         $data->save();
 
         DokterOrderCreated::dispatch();
+
+        Alert::image('<b>Terimakasih!</b>', '<h6><b>Pesanan anda sudah diterima</b></h6>', '../public/img/koki.gif', '150', '150', 'koki')
+            ->showConfirmButton(false, '#FFFFFF00')
+            ->autoClose(4000)
+            ->background('#FFFFFFCC')
+            ->buttonsStyling(false)
+            ->width('20rem')
+            ->toHtml();
 
         return redirect('/dokterorder');
     }

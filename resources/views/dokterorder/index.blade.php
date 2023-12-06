@@ -23,6 +23,7 @@
         </div>
     </div>
     @include('dokterorder.add_order')
+    @include('sweetalert::alert')
 </div>
 @endsection
 
