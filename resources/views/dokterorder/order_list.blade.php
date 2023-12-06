@@ -104,7 +104,7 @@
 
         <div v-for="(item,index) in order_list">
             <audio autoplay v-if="item.status=='Belum Diproses'">
-                <source src="../public/audio/positive.mp3" type="audio/mp3">
+                <source src="../public/audio/orderan_masuk.mp3" type="audio/mp3">
             </audio>
         </div>
     </div>

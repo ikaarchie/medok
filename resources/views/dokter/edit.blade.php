@@ -1,4 +1,4 @@
-<div class="modal fade" id="editdokter{{$dokter->id}}" tabindex="-1" data-bs-backdrop="static"
+<div class="modal fade" id="editdokter{{$data->id}}" tabindex="-1" data-bs-backdrop="static"
     aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -7,10 +7,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                {!! Form::model($dokter, [ 'method' => 'patch','route' => ['editDokter', $dokter->id] ]) !!}
+                {!! Form::model($data, [ 'method' => 'patch','route' => ['editDokter', $data->id] ]) !!}
 
                 <div class="col-sm-12 mb-3 form-floating">
-                    {!! Form::text('nama', $dokter->dokter, ['style' => 'height: auto', 'class' => 'form-control',
+                    {!! Form::text('nama', $data->dokter, ['style' => 'height: auto', 'class' => 'form-control',
                     'id' => 'nama', 'placeholder' => 'Nama', 'required']) !!}
                     {!! Form::label('nama', 'Nama') !!}
                 </div>

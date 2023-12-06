@@ -4,7 +4,7 @@
 {{-- {{ dd($coba) }} --}}
 
 <div class="container justify-content-center align-items-center mt-3">
-    <div class="d-grid gap-2 mx-auto">
+    <div class="d-grid gap-3 mx-auto">
         <a href="{{ url()->previous() }}" type="button" class="btn btn-primary btn-sm col-2">
             <i class="fa-solid fa-angles-left"></i></a>
 
@@ -56,7 +56,7 @@
                                 font = 'black';
                             }
 
-                            html += '<div class="card mb-2">';
+                            html += '<div class="card mb-3">';
                             html += '<div class="card-header">';
                             html += '<div class="gap-1 d-flex justify-content-start">'+tracking[i]['nama']+'</div>';
                             html += '</div>';

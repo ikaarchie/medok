@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\DokterOrder;
 use Illuminate\Http\Request;
 use App\Events\DokterOrderCreated;
+use App\Models\Dokter;
 use App\Models\Master;
 use Illuminate\Support\Facades\DB;
 
@@ -26,6 +27,12 @@ class DokterOrderController extends Controller
 
     public function add()
     {
+        $dokter = Dokter::orderBy('nama', 'ASC')->get();
+        $list_dokter =  [];
+        foreach ($dokter as $doctor) {
+            $list_dokter[$doctor->nama] = $doctor->nama;
+        }
+
         $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
         $list_makanan =  [];
         foreach ($makanan as $makan) {
@@ -52,7 +59,7 @@ class DokterOrderController extends Controller
 
         $order_list = DokterOrder::latest()->get();
 
-        return view('dokterorder.index', compact('list_makanan', 'list_minuman', 'ket_makanan', 'ket_minuman'));
+        return view('dokterorder.index', compact('list_dokter', 'list_makanan', 'list_minuman', 'ket_makanan', 'ket_minuman'));
     }
 
     public function save(Request $request)
@@ -142,8 +149,7 @@ class DokterOrderController extends Controller
 
         if ($request->ajax()) {
             $tracking = $query->where(['nama' => $request->dokter])
-                // ->groupBy('nama')
-                // ->latest('id')
+                ->orderBy('belum_diproses', 'DESC')
                 ->get();
             return response()->json(['tracking' => $tracking], 200);
         }

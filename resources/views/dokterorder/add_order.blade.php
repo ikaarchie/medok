@@ -11,9 +11,9 @@
                 {!! Form::hidden('id') !!}
 
                 <div class="col-sm-12 mb-3 form-floating">
-                    {!! Form::text('nama', '', ['style' => 'height: auto', 'class' => 'form-control', 'id' =>
-                    'nama', 'placeholder' => 'Nama Dokter', 'required']) !!}
-                    {!! Form::label('nama', 'Nama Dokter') !!}
+                    {!! Form::select('nama', $list_dokter, '', ['style' => 'height: auto', 'class' =>
+                    'form-select', 'id' => 'nama', 'placeholder' => '-- Pilih nama dokter --','required']) !!}
+                    {!! Form::label('nama', 'Pilih nama dokter') !!}
                 </div>
 
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
