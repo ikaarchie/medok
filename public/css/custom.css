@@ -405,3 +405,14 @@ body {
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
+
+/* ANIMATED BACKGROUND */
+.animasi {
+    min-height: 50vh;
+    width: 100%;
+    background: linear-gradient(-135deg, #8e24aa, #a71fa2, #bd1e99, #ce238f, #dd2e86, #de46a1, #db5cba, #d670d2, #a597ff, #5cb7ff, #00d1ff, #00e5ff);
+    /* background: linear-gradient(-135deg, #9C27B0, #F50057, #e73c7e); */
+    background-size: 400% 400%;
+    animation: gradient 7s ease infinite;
+    /* display: flex; */
+}

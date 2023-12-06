@@ -1,14 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.tracking')
 
 @section('content')
 {{-- {{ dd($coba) }} --}}
 
 <div class="container justify-content-center align-items-center mt-3">
     <div class="d-grid gap-3 mx-auto">
-        <a href="{{ url()->previous() }}" type="button" class="btn btn-primary btn-sm col-2">
+        <a href="{{ url()->previous() }}" type="button" class="btn btn-primary btn-sm blur col-2">
             <i class="fa-solid fa-angles-left"></i></a>
 
-        <select class="form-select form-select" name="filter" id="filter">
+        <select class="form-select form-select blur" name="filter" id="filter">
             <option selected>-- Pilih nama dokter --</option>
             @if(count($dokter) > 0)
             @foreach($dokter as $nama)
@@ -56,31 +56,31 @@
                                 font = 'black';
                             }
 
-                            html += '<div class="card mb-3">';
-                            html += '<div class="card-header">';
-                            html += '<div class="gap-1 d-flex justify-content-start">'+tracking[i]['nama']+'</div>';
+                            html += '<div class="card mb-3 blur">';
+                            html += '<div class="card-header text-white">';
+                            html += '<div class="gap-1 d-flex justify-content-start"><b>'+tracking[i]['nama']+'</b></div>';
                             html += '</div>';
                             html += '<div class="card-body">';
                             html += '<div class="table-responsive">';
                             html += '<table class="table table-striped-columns align-middle">';
-                            html += '<tbody>';
+                            html += '<tbody class="text-white">';
                             html += '<tr>';
                             html += '<th class="col-2">Makanan</th>';
-                            html += '<td>' + tracking[i]['makanan'];
+                            html += '<td class="text-white">' + tracking[i]['makanan'];
                                 if (tracking[i]['ket_makanan'] !== null) {
                                     html += ' ' + tracking[i]['ket_makanan'];
                                 }
                             html += '</tr>';
                             html += '<tr>';
                             html += '<th class="col-2">Minuman</th>';
-                            html += '<td>' + tracking[i]['minuman'];
+                            html += '<td class="text-white">' + tracking[i]['minuman'];
                                 if (tracking[i]['ket_minuman'] !== null) {
                                     html += ' ' + tracking[i]['ket_minuman'];
                                 }
                             html += '</tr>';
                             html += '<tr>';
                             html += '<th class="col-2">Waktu pemesanan</th>';
-                            html += '<td>'+tracking[i]['belum_diproses']+'</td>';
+                            html += '<td class="text-white">'+tracking[i]['belum_diproses']+'</td>';
                             html += '</tr>';
                             html += '</tbody>';
                             html += '</table>';
