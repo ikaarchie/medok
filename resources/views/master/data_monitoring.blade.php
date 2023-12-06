@@ -5,7 +5,7 @@
 <div class="container-fluid justify-content-center bg-white">
     <div class="table-responsive mt-1 table-data tbl-fixed" id="appMonitoring">
         <table class="table table-bordered table-striped align-middle w-100">
-            <thead>
+            <thead class="sticky">
                 <tr class="sticky text-light text-center">
                     <th scope="col">No</th>
                     <th scope="col">Nama Dokter</th>

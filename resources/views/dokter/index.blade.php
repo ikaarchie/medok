@@ -2,7 +2,7 @@
 
 @section('masterContent')
 
-<div class="container justify-content-center bg-white p-5">
+<div class="container justify-content-center bg-white">
     <div class="d-md-flex justify-content-between">
         <div class="gap-1 d-md-flex justify-content-md-start mt-2">
             <button type="button" data-bs-toggle="modal" data-bs-target="#tambah" class="btn"

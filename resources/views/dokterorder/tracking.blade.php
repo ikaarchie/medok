@@ -5,7 +5,7 @@
 
 <div class="container justify-content-center align-items-center mt-3">
     <div class="d-grid gap-3 mx-auto">
-        <a href="{{ url()->previous() }}" type="button" class="btn btn-primary btn-sm blur col-2">
+        <a href="{{ url()->previous() }}" type="button" class="btn btn-sm blur text-white col-2">
             <i class="fa-solid fa-angles-left"></i></a>
 
         <select class="form-select form-select blur" name="filter" id="filter">
