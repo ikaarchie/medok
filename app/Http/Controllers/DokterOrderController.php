@@ -84,7 +84,7 @@ class DokterOrderController extends Controller
 
         DokterOrderCreated::dispatch();
 
-        Alert::image('<b>Terimakasih!</b>', '<h6><b>Pesanan anda sudah diterima</b></h6>', '../public/img/koki.gif', '150', '150', 'koki')
+        Alert::image('<h1 style="color:black"><b>Terimakasih!</b></h1>', '<h6 style="color:black"><b>Pesanan anda sudah diterima</b></h6>', '../public/img/koki.gif', '150', '150', 'koki')
             ->showConfirmButton(false, '#FFFFFF00')
             ->autoClose(4000)
             ->background('#FFFFFFCC')
