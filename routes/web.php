@@ -26,10 +26,10 @@ use App\Http\Controllers\DokterOrderController;
 Route::get('/orderlist', [DokterOrderController::class, 'index'])->name('listDokterOrder');
 Route::get('/dokterorder', [DokterOrderController::class, 'add'])->name('addDokterOrder');
 Route::post('/dokterorder/save', [DokterOrderController::class, 'save'])->name('saveDokterOrder');
-Route::get('sedangdiproses/{id}', [DokterOrderController::class, 'sedangdiproses'])->name('sedangdiproses');
-Route::get('menunggupengantaran/{id}', [DokterOrderController::class, 'menunggupengantaran'])->name('menunggupengantaran');
-Route::get('sedangdiantar/{id}', [DokterOrderController::class, 'sedangdiantar'])->name('sedangdiantar');
-Route::get('selesai/{id}', [DokterOrderController::class, 'selesai'])->name('selesai');
+Route::patch('sedangdiproses/{id}', [DokterOrderController::class, 'sedangdiproses'])->name('sedangdiproses');
+Route::patch('menunggupengantaran/{id}', [DokterOrderController::class, 'menunggupengantaran'])->name('menunggupengantaran');
+Route::patch('sedangdiantar/{id}', [DokterOrderController::class, 'sedangdiantar'])->name('sedangdiantar');
+Route::patch('selesai/{id}', [DokterOrderController::class, 'selesai'])->name('selesai');
 
 Route::get('/tracking', [DokterOrderController::class, 'tracking'])->name('trackingOrder');
 

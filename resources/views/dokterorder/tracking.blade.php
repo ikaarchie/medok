@@ -56,6 +56,14 @@
                                 font = 'black';
                             }
 
+                            var tanggalAwal = tracking[i]['belum_diproses'];
+                            var tanggalObjek = new Date(tanggalAwal);
+                            var tanggalDanWaktu =   ("0" + tanggalObjek.getDate()).slice(-2) + "/" +
+                                                    ("0" + (tanggalObjek.getMonth() + 1)).slice(-2) + "/" +
+                                                    tanggalObjek.getFullYear() + " " +
+                                                    ("0" + tanggalObjek.getHours()).slice(-2) + ":" +
+                                                    ("0" + tanggalObjek.getMinutes()).slice(-2);
+
                             html += '<div class="card mb-3 blur">';
                             html += '<div class="card-header text-white">';
                             html += '<div class="gap-1 d-flex justify-content-start"><b>'+tracking[i]['nama']+'</b></div>';
@@ -80,7 +88,7 @@
                             html += '</tr>';
                             html += '<tr>';
                             html += '<th class="col-2">Waktu pemesanan</th>';
-                            html += '<td class="text-white">'+tracking[i]['belum_diproses']+'</td>';
+                            html += '<td class="text-white">'+ tanggalDanWaktu +'</td>';
                             html += '</tr>';
                             html += '</tbody>';
                             html += '</table>';
