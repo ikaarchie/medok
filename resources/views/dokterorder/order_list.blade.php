@@ -25,7 +25,7 @@
     <div class="table-responsive mt-1 table-data tbl-fixed" id="appVue">
         <table class="table table-bordered table-striped align-middle w-100">
             <thead>
-                <tr class="sticky text-light text-center">
+                <tr class="sticky text-light text-center align-middle">
                     <th scope="col" style="width: 1%">No</th>
                     <th scope="col">Nama Dokter</th>
                     <th scope="col">Makanan</th>
@@ -104,7 +104,7 @@
 
         <div v-for="(item,index) in order_list">
             <audio autoplay v-if="item.status=='Belum Diproses'">
-                <source src="../public/audio/orderan_masuk.mp3" type="audio/mp3">
+                <source src="../public/audio/ngekek.mp3" type="audio/mp3">
             </audio>
         </div>
     </div>

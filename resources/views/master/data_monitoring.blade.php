@@ -4,9 +4,9 @@
 
 <div class="container-fluid justify-content-center bg-white">
     <div class="table-responsive mt-1 table-data tbl-fixed" id="appMonitoring">
-        <table class="table table-bordered table-striped align-middle w-100">
+        <table class="table table-bordered table-striped w-100 align-middle">
             <thead class="sticky">
-                <tr class="sticky text-light text-center">
+                <tr class="sticky text-light text-center align-middle">
                     <th scope="col">No</th>
                     <th scope="col">Nama Dokter</th>
                     <th scope="col">Makanan</th>

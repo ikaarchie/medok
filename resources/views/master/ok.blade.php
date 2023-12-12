@@ -25,7 +25,7 @@
     <div class="table-responsive mt-1 table-data tbl-fixed" id="appMonitoring">
         <table class="table table-bordered table-striped align-middle w-100">
             <thead class="sticky">
-                <tr class="sticky text-light text-center">
+                <tr class="sticky text-light text-center align-middle">
                     <th scope="col" style="width: 1%">No</th>
                     <th scope="col">Nama Dokter</th>
                     <th scope="col">Makanan</th>
