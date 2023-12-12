@@ -152,6 +152,15 @@ class DokterOrderController extends Controller
         return view('master.data_monitoring');
     }
 
+    public function ok(Request $request)
+    {
+        if ($request->expectsJson()) {
+            $monitoring = DokterOrder::latest()->get();
+            return response()->json(['monitoring' => $monitoring], 200);
+        }
+        return view('master.ok');
+    }
+
     public function tracking(Request $request)
     {
         $query = DokterOrder::query();
