@@ -24,8 +24,8 @@
                 <tr v-for="(item,index) in monitoring">
                     <td>@{{ index + 1 }}</td>
                     <td>@{{ item.nama }}</td>
-                    <td>@{{ item.makanan }}</td>
-                    <td>@{{ item.minuman }}</td>
+                    <td>@{{ item.makanan }} @{{ item.ket_makanan }}</td>
+                    <td>@{{ item.minuman }} @{{ item.ket_minuman }}</td>
                     <td>@{{ item.tanggal_tindakan | tgl }} @{{ item.waktu_tindakan }}</td>
                     <td>@{{ item.belum_diproses | tglIndo }}</td>
                     <td>@{{ item.sedang_diproses | tglIndo }}</td>
