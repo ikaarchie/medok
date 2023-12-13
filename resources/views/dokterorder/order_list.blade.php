@@ -152,9 +152,9 @@
                     }
                     // console.log(order_list, id, status);
                     $.ajax({
+                        method: "GET",
                         url: route,
-                        type:"GET",
-                        data:{'order_list' : order_list},
+                        data: {'order_list' : order_list},
                         success:function(data){
                         // updateStatus(order_list, id, status);
                         }
@@ -177,7 +177,7 @@
 
 <script>
     window.Echo.channel("messages").listen("DokterOrderCreated", (event) => {
-            console.log(event);
+            // console.log(event);
             // alert('sukses');
             vueDataDokterOrder.getData();
         });
