@@ -118,7 +118,7 @@
             },
             mounted() {
                 this.getData();
-                // this.updateStatus();
+                this.updateStatus();
             },
             methods: {
                 getData: function() {
@@ -154,7 +154,7 @@
                     $.ajax({
                         url: route,
                         type:"GET",
-                        data:{'dokorder_lister' : order_list},
+                        data:{'order_list' : order_list},
                         success:function(data){
                         // updateStatus(order_list, id, status);
                         }
