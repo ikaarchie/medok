@@ -106,6 +106,22 @@ class DokterOrderController extends Controller
 
         return redirect('/orderlist');
     }
+    // public function sedangdiproses(Request $request, $id)
+    // {
+    //     if ($request->isMethod('post')) {
+    //         $sedangdiproses = DokterOrder::findOrFail($id); // Menggunakan findOrFail agar melempar 404 jika tidak ditemukan
+
+    //         $sedangdiproses->status = 'Sedang Diproses';
+    //         $sedangdiproses->sedang_diproses = Carbon::now();
+    //         $sedangdiproses->save();
+
+    //         DokterOrderCreated::dispatch();
+
+    //         return response()->json(['message' => 'Data berhasil diperbarui'], 200);
+    //     }
+
+    //     return redirect('/orderlist');
+    // }
 
     public function menunggupengantaran(Request $request, $id)
     {

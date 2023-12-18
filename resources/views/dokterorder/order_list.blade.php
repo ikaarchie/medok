@@ -81,23 +81,37 @@
 
                     <td class="text-center">
                         <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
-                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 1)"
-                                :id="'sedangdiproses_'+index"
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 1)" {{--
+                                :id="'sedangdiproses_'+index" --}}
                                 :class="`${item.sedang_diproses === null ? 'btn sedangdiproses' : 'btn tombolmati'}`">Sedang
                                 Diproses</a>
-                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 2)"
-                                :id="'menunggupengantaran_'+index"
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 2)" {{--
+                                :id="'menunggupengantaran_'+index" --}}
                                 :class="`${item.menunggu_pengantaran === null ? 'btn menunggupengantaran' : 'btn tombolmati'}`">Menunggu
                                 Pengantaran</a>
-                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 3)"
-                                :id="'sedangdiantar_'+index"
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 3)" {{--
+                                :id="'sedangdiantar_'+index" --}}
                                 :class="`${item.sedang_diantar === null ? 'btn sedangdiantar' : 'btn tombolmati'}`">Sedang
                                 Diantar</a>
-                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 4)"
-                                :id="'selesai_'+index"
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 4)" {{--
+                                :id="'selesai_'+index" --}}
                                 :class="`${item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">Selesai</a>
                         </div>
                     </td>
+
+                    {{-- <td class="text-center">
+                        <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
+                            <form :action="`{{ route('sedangdiproses', '') }}/${item.id}`" method="post">
+                                <input type="hidden" name="order_list" :value="order_list">
+                                <input type="hidden" name="item_id" :value="item.id">
+                                <input type="hidden" name="status" value="1">
+                                <button type="submit" :id="'sedangdiproses_'+index"
+                                    :class="`${item.sedang_diproses === null ? 'btn sedangdiproses' : 'btn tombolmati'}`">Sedang
+                                    Diproses</button>
+                            </form>
+                        </div>
+                    </td> --}}
+
                 </tr>
             </tbody>
         </table>
@@ -154,9 +168,15 @@
                     $.ajax({
                         method: "GET",
                         url: route,
-                        data: {'order_list' : order_list},
+                        data: {
+                            // '_token': '{{ csrf_token() }}',
+                            'order_list' : order_list
+                        },
                         success:function(data){
                         // updateStatus(order_list, id, status);
+                        },
+                        error: function(error) {
+                            alert('Terjadi kesalahan saat memperbarui status');
                         }
                     });
                 }
