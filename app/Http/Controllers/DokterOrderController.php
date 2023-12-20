@@ -17,13 +17,14 @@ class DokterOrderController extends Controller
     {
         $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
         $minuman = Master::where([['jenis', 'Minuman'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
-        $order_list = DokterOrder::latest()->get();
+        // $order_list = DokterOrder::latest()->get();
+        $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
 
         if ($request->expectsJson()) {
-            $order_list = DokterOrder::latest()->get();
+            $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
             return response()->json(['order_list' => $order_list], 200);
         }
-
+        // dd($selain_selesai);
         return view('dokterorder.order_list', compact('order_list', 'makanan', 'minuman'));
     }
 

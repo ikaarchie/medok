@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>.: DAPUR RSHBM :.</title>
+    <title>.: MEDOK :.</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Itim|Bungee|Jura|Baloo+Bhaijaan+2:800'>
 
     <link href="{{ url('css/app.css') }}" rel="stylesheet">
     <link href="{{ url('css/custom.css') }}" rel="stylesheet">
