@@ -24,7 +24,7 @@ class DokterOrderController extends Controller
             $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
             return response()->json(['order_list' => $order_list], 200);
         }
-        // dd($selain_selesai);
+        // dd($order_list);
         return view('dokterorder.order_list', compact('order_list', 'makanan', 'minuman'));
     }
 
