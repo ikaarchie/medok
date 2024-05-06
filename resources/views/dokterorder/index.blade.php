@@ -17,13 +17,13 @@
         <div class="d-grid gap-5 col-10 mx-auto">
             <h1 class="text-center">
                 <b class="display-1 text-white"
-                    style="font-family: 'Baloo Bhaijaan 2', serif; font-size: 5rem;">MeDok</b>
+                    style="font-family: 'Baloo Bhaijaan 2', serif; font-size: 5rem;">SiMeDok</b>
                 {{-- <img src="{{ url('img/medok.png') }}" width="500" class=" fill-current text-gray-500" /> --}}
                 <div class="roller">
                     <span id="rolltext">
+                        <b style=" font-family: 'Itim' , serif;">Sistem Informasi</b><br />
                         <b style="font-family: 'Itim', serif;">Menu Dokter OK</b><br />
                         <b style=" font-family: 'Jura' , serif;">RS Hermina Banyumanik</b><br />
-                        {{-- <b style=" font-family: 'Jura' , serif;">Banyumanik</b> --}}
                         {{-- <span id="spare-time">
                             <p style="font-family: 'Bungee', serif;">RS Hermina</p><br />
                             <p style="font-family: 'Bungee', serif;">Banyumanik</p>
