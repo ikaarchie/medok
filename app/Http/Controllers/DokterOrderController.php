@@ -17,14 +17,25 @@ class DokterOrderController extends Controller
     {
         $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
         $minuman = Master::where([['jenis', 'Minuman'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
-        // $order_list = DokterOrder::latest()->get();
-        $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
 
+        // cara 1
+        // if ($request->expectsJson()) {
+        //     $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
+        //     return response()->json(['order_list' => $order_list], 200);
+        // }
+
+        // cara 2
+        $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
         if ($request->expectsJson()) {
-            $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
             return response()->json(['order_list' => $order_list], 200);
         }
-        // dd($order_list);
+
+        // cara 3
+        // if ($request->ajax()) {
+        //     $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
+        //     return response()->json(['order_list' => $order_list]);
+        // }
+
         return view('dokterorder.order_list', compact('order_list', 'makanan', 'minuman'));
     }
 
@@ -162,17 +173,18 @@ class DokterOrderController extends Controller
 
     public function monitoring(Request $request)
     {
+        $monitoring = DokterOrder::latest()->get();
         if ($request->expectsJson()) {
-            $monitoring = DokterOrder::latest()->get();
             return response()->json(['monitoring' => $monitoring], 200);
         }
+
         return view('master.data_monitoring');
     }
 
     public function ok(Request $request)
     {
+        $monitoring = DokterOrder::latest()->get();
         if ($request->expectsJson()) {
-            $monitoring = DokterOrder::latest()->get();
             return response()->json(['monitoring' => $monitoring], 200);
         }
         return view('master.ok');

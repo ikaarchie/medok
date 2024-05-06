@@ -22,7 +22,7 @@
 </div>
 
 <div class="container-fluid justify-content-center bg-white">
-    <div class="table-responsive mt-1 table-data tbl-fixed" id="appVue">
+    <div class="table-responsive mt-1 table-data tbl-fixed" id="orderlist">
         <table class="table table-bordered table-striped align-middle w-100">
             <thead>
                 <tr class="sticky text-light text-center align-middle">
@@ -126,7 +126,7 @@
 
 <script>
     var vueDataDokterOrder = new Vue({
-            el: "#appVue",
+            el: "#orderlist",
             data: {
                 order_list: []
             },

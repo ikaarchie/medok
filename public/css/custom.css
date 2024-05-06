@@ -4,6 +4,14 @@ body {
     background-color: #fff;
 }
 
+thead {
+    font-size: clamp(9px, 1vw, 18px);
+}
+
+tbody {
+    font-size: clamp(8px, 1vw, 16px)
+}
+
 .header-waves {
     position: relative;
     text-align: center;

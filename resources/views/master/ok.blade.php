@@ -22,7 +22,7 @@
 </div>
 
 <div class="container-fluid justify-content-center bg-white">
-    <div class="table-responsive mt-1 table-data tbl-fixed" id="appMonitoring">
+    <div class="table-responsive mt-1 table-data tbl-fixed" id="monitoringOk">
         <table class="table table-bordered table-striped align-middle w-100">
             <thead class="sticky">
                 <tr class="sticky text-light text-center align-middle">
@@ -86,7 +86,7 @@
     Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
 
     var vueMonitoring = new Vue({
-        el: "#appMonitoring",
+        el: "#monitoringOk",
         data: {
             monitoring: []
         },
