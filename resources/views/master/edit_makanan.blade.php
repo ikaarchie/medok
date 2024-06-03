@@ -31,7 +31,7 @@
 
                 <div class="col-sm-12 mb-3 form-floating">
                     {!! Form::select('status', [
-                    'Aktif' => 'Aktif', 'Nonaktif' => 'Nonaktif'
+                    'Tersedia' => 'Tersedia', 'Tidak Tersedia' => 'Tidak Tersedia'
                     ], $item->status, ['style' => 'height: auto', 'class' => 'form-select', 'id' =>
                     'status', 'placeholder' => '-- Pilih status item --','required']) !!}
                     {!! Form::label('status', 'Status Item') !!}

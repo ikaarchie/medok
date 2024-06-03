@@ -15,8 +15,8 @@ class DokterOrderController extends Controller
 {
     public function index(Request $request)
     {
-        $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
-        $minuman = Master::where([['jenis', 'Minuman'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Tersedia']])->orderBy('item', 'ASC')->get();
+        $minuman = Master::where([['jenis', 'Minuman'], ['status', 'Tersedia']])->orderBy('item', 'ASC')->get();
 
         // cara 1
         // if ($request->expectsJson()) {
@@ -47,25 +47,25 @@ class DokterOrderController extends Controller
             $list_dokter[$doctor->nama] = $doctor->nama;
         }
 
-        $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Tersedia']])->orderBy('item', 'ASC')->get();
         $list_makanan =  [];
         foreach ($makanan as $makan) {
             $list_makanan[$makan->item] = $makan->item;
         }
 
-        $minuman = Master::where([['jenis', 'Minuman'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $minuman = Master::where([['jenis', 'Minuman'], ['status', 'Tersedia']])->orderBy('item', 'ASC')->get();
         $list_minuman =  [];
         foreach ($minuman as $minum) {
             $list_minuman[$minum->item] = $minum->item;
         }
 
-        $ketMakanan = Master::select('item')->where([['jenis', 'Makanan'], ['keterangan', 'Aktif'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $ketMakanan = Master::select('item')->where([['jenis', 'Makanan'], ['keterangan', 'Tersedia'], ['status', 'Tersedia']])->orderBy('item', 'ASC')->get();
         $ket_makanan =  [];
         foreach ($ketMakanan as $ket_mkn) {
             $ket_makanan[$ket_mkn->item] = $ket_mkn->item;
         }
 
-        $ketMinuman = Master::where([['jenis', 'Minuman'], ['status', 'Aktif']])->orderBy('item', 'ASC')->get();
+        $ketMinuman = Master::where([['jenis', 'Minuman'], ['status', 'Tersedia']])->orderBy('item', 'ASC')->get();
         $ket_minuman =  [];
         foreach ($ketMinuman as $ket_mnm) {
             $ket_minuman[$ket_mnm->item] = $ket_mnm->item;
