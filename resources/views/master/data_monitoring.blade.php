@@ -11,7 +11,7 @@
                     <th scope="col">Nama Dokter</th>
                     <th scope="col">Makanan</th>
                     <th scope="col">Minuman</th>
-                    <th scope="col">Waktu Tindakan</th>
+                    <th scope="col">Waktu Disajikan</th>
                     <th scope="col">Waktu Pesanan</th>
                     <th scope="col">Sedang Diproses</th>
                     <th scope="col">Menunggu Pengantaran</th>
@@ -26,7 +26,7 @@
                     <td>@{{ item.nama }}</td>
                     <td>@{{ item.makanan }} @{{ item.ket_makanan }}</br>(@{{ item.ops_ket_makanan }})</td>
                     <td>@{{ item.minuman }} @{{ item.ket_minuman }}</br>(@{{ item.ops_ket_minuman }})</td>
-                    <td>@{{ item.tanggal_tindakan | tgl }} @{{ item.waktu_tindakan }}</td>
+                    <td>@{{ item.tanggal_disajikan | tgl }} @{{ item.waktu_disajikan }}</td>
                     <td>@{{ item.belum_diproses | tglIndo }}</td>
                     <td>@{{ item.sedang_diproses | tglIndo }}</td>
                     <td>@{{ item.menunggu_pengantaran | tglIndo }}</td>
