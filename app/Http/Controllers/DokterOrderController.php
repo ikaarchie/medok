@@ -26,6 +26,7 @@ class DokterOrderController extends Controller
 
         // cara 2
         $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
+        // $order_list = DokterOrder::whereNotIn('status', ['Sedang Diantar', 'Selesai'])->latest()->get();
         if ($request->expectsJson()) {
             return response()->json(['order_list' => $order_list], 200);
         }
@@ -80,12 +81,14 @@ class DokterOrderController extends Controller
     {
         $data = new DokterOrder();
         $data->nama = $request->input('nama');
-        $data->tanggal_tindakan = $request->input('tanggal_tindakan');
-        $data->waktu_tindakan = $request->input('waktu_tindakan');
+        $data->tanggal_disajikan = $request->input('tanggal_disajikan');
+        $data->waktu_disajikan = $request->input('waktu_disajikan');
         $data->makanan = $request->input('makanan');
         $data->ket_makanan = $request->input('ket_makanan');
+        $data->ops_ket_makanan = $request->input('ops_ket_makanan');
         $data->minuman = $request->input('minuman');
         $data->ket_minuman = $request->input('ket_minuman');
+        $data->ops_ket_minuman = $request->input('ops_ket_minuman');
         $data->status = 'Belum Diproses';
         $data->belum_diproses = Carbon::now();
         $data->sedang_diproses = $request->input('sedang_diproses');

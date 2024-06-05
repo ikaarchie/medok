@@ -76,14 +76,18 @@
                             html += '<th class="col-2">Makanan</th>';
                             html += '<td class="text-white">' + tracking[i]['makanan'];
                                 if (tracking[i]['ket_makanan'] !== null) {
-                                    html += ' ' + tracking[i]['ket_makanan'];
+                                    html += ' ' + tracking[i]['ket_makanan'] + ' (' + tracking[i]['ops_ket_makanan'] + ')';
+                                }else{
+                                    html += ' (' + tracking[i]['ops_ket_makanan'] + ')';
                                 }
                             html += '</tr>';
                             html += '<tr>';
                             html += '<th class="col-2">Minuman</th>';
                             html += '<td class="text-white">' + tracking[i]['minuman'];
                                 if (tracking[i]['ket_minuman'] !== null) {
-                                    html += ' ' + tracking[i]['ket_minuman'];
+                                    html += ' ' + tracking[i]['ket_minuman'] + ' (' + tracking[i]['ops_ket_minuman'] + ')';
+                                }else{
+                                    html += ' (' + tracking[i]['ops_ket_minuman'] + ')';
                                 }
                             html += '</tr>';
                             html += '<tr>';

@@ -16,19 +16,23 @@
                     {!! Form::label('nama', 'Pilih nama dokter') !!}
                 </div>
 
+                <div class="col-sm-12 mb-1 fw-bold text-white font-monospace">
+                    <p>*Pemesanan minimal 30 menit sebelum waktu disajikan</p>
+                </div>
+
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <div class="col-sm-6 mb-3 form-floating">
-                        {!! Form::date('tanggal_tindakan', '', ['style' => 'height: auto', 'class' =>
+                        {!! Form::date('tanggal_disajikan', '', ['style' => 'height: auto', 'class' =>
                         'form-control',
-                        'id' => 'tanggal_tindakan', 'required']) !!}
-                        {!! Form::label('tanggal_tindakan', 'Tanggal Tindakan') !!}
+                        'id' => 'tanggal_disajikan', 'required']) !!}
+                        {!! Form::label('tanggal_disajikan', 'Tanggal disajikan') !!}
                     </div>
 
                     <div class="col-sm-6 mb-3 form-floating">
-                        {!! Form::time('waktu_tindakan', '', ['style' => 'height: auto', 'class' =>
+                        {!! Form::time('waktu_disajikan', '', ['style' => 'height: auto', 'class' =>
                         'form-control',
-                        'id' => 'waktu_tindakan', 'required']) !!}
-                        {!! Form::label('waktu_tindakan', 'Jam Tindakan') !!}
+                        'id' => 'waktu_disajikan', 'required']) !!}
+                        {!! Form::label('waktu_disajikan', 'Jam disajikan') !!}
                     </div>
                 </div>
 
@@ -43,6 +47,12 @@
                 </div>
 
                 <div class="col-sm-12 mb-3 form-floating">
+                    {!! Form::text('ops_ket_makanan', '', ['style' => 'height: auto', 'class' =>
+                    'form-control', 'id' => 'ops_ket_makanan', 'placeholder' => '-']) !!}
+                    {!! Form::label('ops_ket_makanan', 'Keterangan makanan (opsional)') !!}
+                </div>
+
+                <div class="col-sm-12 mb-3 form-floating">
                     {!! Form::select('minuman', $list_minuman, '', ['style' => 'height: auto', 'class' =>
                     'form-select',
                     'id' => 'minuman', 'placeholder' => '-- Pilih minuman --','required']) !!}
@@ -50,6 +60,12 @@
                 </div>
 
                 <div id="ketMinuman" class="col-sm-12 mb-3 form-floating" style="display: none;">
+                </div>
+
+                <div class="col-sm-12 mb-3 form-floating">
+                    {!! Form::text('ops_ket_minuman', '', ['style' => 'height: auto', 'class' =>
+                    'form-control', 'id' => 'ops_ket_minuman', 'placeholder' => '-']) !!}
+                    {!! Form::label('ops_ket_minuman', 'Keterangan minuman (opsional)') !!}
                 </div>
             </div>
 

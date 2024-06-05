@@ -11,10 +11,14 @@ class DokterOrder extends Model
 
     protected $fillable = [
         'nama',
-        'tanggal_tindakan',
-        'waktu_tindakan',
+        'tanggal_disajikan',
+        'waktu_disajikan',
         'makanan',
+        'ket_makanan',
+        'ops_ket_makanan',
         'minuman',
+        'ket_minuman',
+        'ops_ket_minuman',
         'status',
         'belum_diproses',
         'sedang_diproses',

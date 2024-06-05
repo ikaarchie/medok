@@ -16,12 +16,14 @@ class CreateDokterOrdersTable extends Migration
         Schema::create('dokter_orders', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('tanggal_tindakan');
-            $table->string('waktu_tindakan');
+            $table->string('tanggal_disajikan');
+            $table->string('waktu_disajikan');
             $table->string('makanan');
             $table->string('ket_makanan')->nullable();
+            $table->string('ops_ket_makanan')->nullable();
             $table->string('minuman');
             $table->string('ket_minuman')->nullable();
+            $table->string('ops_ket_minuman')->nullable();
             $table->string('status')->nullable()->default('Belum Diproses');
             $table->string('belum_diproses')->nullable();
             $table->string('sedang_diproses')->nullable();

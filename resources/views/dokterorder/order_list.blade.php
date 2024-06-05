@@ -30,7 +30,7 @@
                     <th scope="col">Nama Dokter</th>
                     <th scope="col">Makanan</th>
                     <th scope="col">Minuman</th>
-                    <th scope="col" style="width: 8%">Waktu Tindakan</th>
+                    <th scope="col" style="width: 8%">Waktu Disajikan</th>
                     <th scope="col" style="width: 8%">Waktu Pesanan</th>
                     <th scope="col" style="width: 11%">Status Saat Ini</th>
                     <th scope="col" style="width: 30%">Ubah Status</th>
@@ -40,9 +40,9 @@
                 <tr v-for="(item,index) in order_list">
                     <td>@{{ index + 1 }}</td>
                     <td>@{{ item.nama }}</td>
-                    <td>@{{ item.makanan }} @{{ item.ket_makanan }}</td>
-                    <td>@{{ item.minuman }} @{{ item.ket_minuman }}</td>
-                    <td>@{{ item.tanggal_tindakan | tgl }} @{{ item.waktu_tindakan }}</td>
+                    <td>@{{ item.makanan }} @{{ item.ket_makanan }}</br>(@{{ item.ops_ket_makanan }})</td>
+                    <td>@{{ item.minuman }} @{{ item.ket_minuman }}</br>(@{{ item.ops_ket_minuman }})</td>
+                    <td>@{{ item.tanggal_disajikan | tgl }} @{{ item.waktu_disajikan }}</td>
                     <td>@{{ item.belum_diproses | tglIndo}}</td>
                     <td v-if="item.status=='Belum Diproses'" class="text-center blink">
                         <b>@{{ item.status }}</b>
@@ -117,9 +117,12 @@
         </table>
 
         <div v-for="(item,index) in order_list">
-            <audio autoplay v-if="item.status=='Belum Diproses'">
+            <audio autoplay loop v-if="item.status=='Belum Diproses'">
                 <source src="../public/audio/funny.mp3" type="audio/mp3">
             </audio>
+            {{-- <audio id="funnyAudio" autoplay loop>
+                <source src="../public/audio/funny.mp3" type="audio/mp3">
+            </audio> --}}
         </div>
     </div>
 </div>
