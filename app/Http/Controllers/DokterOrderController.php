@@ -174,6 +174,18 @@ class DokterOrderController extends Controller
         return redirect('/orderlist');
     }
 
+    public function selesai_dokter(Request $request, $id)
+    {
+        $selesai = DokterOrder::where(['id' => $id])->first();
+        $selesai->status = 'Selesai';
+        $selesai->selesai = Carbon::now();
+        $selesai->save();
+
+        DokterOrderCreated::dispatch();
+
+        return redirect('/tracking');
+    }
+
     public function monitoring(Request $request)
     {
         $monitoring = DokterOrder::latest()->get();

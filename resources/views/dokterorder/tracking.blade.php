@@ -5,7 +5,7 @@
 
 <div class="container justify-content-center align-items-center mt-3">
     <div class="d-grid gap-3 mx-auto">
-        <a href="{{ url()->previous() }}" type="button" class="btn btn-sm blur text-white col-2">
+        <a href="{{ url('/dokterorder') }}" type="button" class="btn btn-sm blur text-white col-2">
             <i class="fa-solid fa-angles-left"></i></a>
 
         <select class="form-select form-select blur" name="filter" id="filter">
@@ -73,7 +73,7 @@
                             html += '<table class="table table-striped-columns align-middle">';
                             html += '<tbody class="text-white">';
                             html += '<tr>';
-                            html += '<th class="col-2">Makanan</th>';
+                            html += '<th class="col-3">Makanan</th>';
                             html += '<td class="text-white">' + tracking[i]['makanan'];
                                 if (tracking[i]['ket_makanan'] !== null) {
                                     html += ' ' + tracking[i]['ket_makanan'] + ' (' + tracking[i]['ops_ket_makanan'] + ')';
@@ -82,7 +82,7 @@
                                 }
                             html += '</tr>';
                             html += '<tr>';
-                            html += '<th class="col-2">Minuman</th>';
+                            html += '<th class="col-3">Minuman</th>';
                             html += '<td class="text-white">' + tracking[i]['minuman'];
                                 if (tracking[i]['ket_minuman'] !== null) {
                                     html += ' ' + tracking[i]['ket_minuman'] + ' (' + tracking[i]['ops_ket_minuman'] + ')';
@@ -91,12 +91,24 @@
                                 }
                             html += '</tr>';
                             html += '<tr>';
-                            html += '<th class="col-2">Waktu pemesanan</th>';
+                            html += '<th class="col-3">Waktu pemesanan</th>';
                             html += '<td class="text-white">'+ tanggalDanWaktu +'</td>';
                             html += '</tr>';
+
+                            // html += '<tr>';
+                            // html += '<th class="col-3">Status pemesanan</th>';
+                            // html += '<td style="background-color: '+warna+'; color: '+font+'"><b>'+ tracking[i]['status'] +'</b></td>';
+                            // html += '</tr>';
+
                             html += '</tbody>';
                             html += '</table>';
                             html += '</div>';
+                            
+                            // html += '<div class="text-center align-middle">';
+                            // html += `<a href="{{ route('selesai_dokter', '') }}/${tracking[i]['id']}" class="${tracking[i]['sedang_diantar'] !== null ? 'btn selesai' : 'btn tombolmati'}"><b>Selesaikan pesanan</b></a>`;
+                            // html += '</div>';
+                            // html += '</div>';
+
                             html += '</div>';
                             html += '<div class="card-footer text-center" style="background-color: '+warna+'; color: '+font+'">';
                             html += '<b>'+tracking[i]['status']+'</b>';

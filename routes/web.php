@@ -32,6 +32,7 @@ Route::get('/sedangdiantar/{id}', [DokterOrderController::class, 'sedangdiantar'
 Route::get('/selesai/{id}', [DokterOrderController::class, 'selesai'])->name('selesai');
 
 Route::get('/tracking', [DokterOrderController::class, 'tracking'])->name('trackingOrder');
+Route::get('/selesai_dokter/{id}', [DokterOrderController::class, 'selesai_dokter'])->name('selesai_dokter');
 
 Route::get('/master', [MasterController::class, 'index'])->name('indexMaster');
 Route::post('/master/add', [MasterController::class, 'add']);
