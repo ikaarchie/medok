@@ -41,8 +41,8 @@
                     <td>@{{ item.nama }}</td>
                     <td>@{{ item.makanan }} @{{ item.ket_makanan }}</br>(@{{ item.ops_ket_makanan }})</td>
                     <td>@{{ item.minuman }} @{{ item.ket_minuman }}</br>(@{{ item.ops_ket_minuman }})</td>
-                    <td>@{{ item.tanggal_disajikan | tgl }} @{{ item.waktu_disajikan }}</td>
-                    <td>@{{ item.belum_diproses | tglIndo }}</td>
+                    <td class="text-center">@{{ item.waktu_disajikan}}</br>@{{ item.tanggal_disajikan| tgl }}</td>
+                    <td class="text-center">@{{ item.belum_diproses | jam}}</br>@{{ item.belum_diproses | tgl}}</td>
                     <td v-if="item.status=='Belum Diproses'" class="text-center blink">
                         <b>@{{ item.status }}</b>
                     </td>
@@ -68,19 +68,37 @@
 </div>
 
 <script>
-    const tglIndo = function (str) {
+    const tgl = function (str) {
         if (str != null) {
-            return moment(str).format("DD/MM/YYYY hh:mm");
+            return moment(str).format("DD/MM/YYYY");
+        }
+        return "-";
+    };
+        const jam = function (str) {
+            if (str != null) {
+        return moment(str).format("hh:mm");
+        }
+        return "-";
+    };
+        const tglIndo = function (str) {
+            if (str != null) {
+        return moment(str).format("DD/MM/YYYY hh:mm");
         }
         return "-";
     };
     
     const filters = {
-        tglIndo
+    tgl, jam, tglIndo
     };
     
     Vue.filter('tgl', function (date) {
-    return moment(date).format('DD/MM/YYYY');
+        return moment(date).format('DD/MM/YYYY');
+    })
+    Vue.filter('jam', function (date) {
+        return moment(date).format('HH:mm');
+    })
+    Vue.filter('tglIndo', function (date) {
+        return moment(date).format('DD/MM/YYYY HH:mm');
     })
     
     Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));

@@ -37,13 +37,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item,index) in order_list">
+                <tr v-for="(item,index) in order_list" class="align-middle">
                     <td>@{{ index + 1 }}</td>
                     <td>@{{ item.nama }}</td>
                     <td>@{{ item.makanan }} @{{ item.ket_makanan }}</br>(@{{ item.ops_ket_makanan }})</td>
                     <td>@{{ item.minuman }} @{{ item.ket_minuman }}</br>(@{{ item.ops_ket_minuman }})</td>
-                    <td>@{{ item.belum_diproses | tglIndo}}</td>
-                    <td>@{{ item.tanggal_disajikan | tgl }} @{{ item.waktu_disajikan }}</td>
+                    <td class="text-center">@{{ item.belum_diproses | jam}}</br>@{{ item.belum_diproses | tgl}}</td>
+                    <td class="text-center">@{{ item.waktu_disajikan}}</br>@{{ item.tanggal_disajikan| tgl }}</td>
                     <td v-if="item.status=='Belum Diproses'" class="text-center blink">
                         <b>@{{ item.status }}</b>
                     </td>
@@ -120,9 +120,6 @@
             <audio autoplay loop v-if="item.status=='Belum Diproses'">
                 <source src="../public/audio/funny.mp3" type="audio/mp3">
             </audio>
-            {{-- <audio id="funnyAudio" autoplay loop>
-                <source src="../public/audio/funny.mp3" type="audio/mp3">
-            </audio> --}}
         </div>
     </div>
 </div>
@@ -190,6 +187,9 @@
 <script>
     Vue.filter('tgl', function (date) {
         return moment(date).format('DD/MM/YYYY');
+    })
+    Vue.filter('jam', function (date) {
+        return moment(date).format('HH:mm');
     })
     Vue.filter('tglIndo', function (date) {
         return moment(date).format('DD/MM/YYYY HH:mm');
