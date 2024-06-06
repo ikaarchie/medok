@@ -18,6 +18,7 @@
                     <th scope="col">Sedang Diantar</th>
                     <th scope="col">Selesai</th>
                     <th scope="col">Status Saat Ini</th>
+                    {{-- <th scope="col">Aksi</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,12 @@
                     <td v-else class="text-center" style="background-color: #00C853;">
                         <b>@{{ item.status }}</b>
                     </td>
+                    {{-- <td class="text-center">
+                        <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
+                            <a href="javascript:void(0)" @click="updateStatus(monitoring, +item.id, 4)"
+                                :class="`${item.sedang_diantar !== null && item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">Selesai</a>
+                        </div>
+                    </td> --}}
                 </tr>
             </tbody>
         </table>
@@ -100,6 +107,7 @@
         },
         mounted() {
             this.getData();
+            this.updateStatus();
         },
         methods: {
             getData: function() {
@@ -114,6 +122,38 @@
                     console.log(err);
                     alert('error');
                 })
+            },
+
+            updateStatus(monitoring, id, status)
+            {
+            var route = '';
+            if (status == 1) {
+                route = "sedangdiproses/" + id ;
+            }
+            if (status == 2) {
+                route = "menunggupengantaran/" + id ;
+            }
+            if (status == 3) {
+                route = "sedangdiantar/" + id ;
+            }
+            if (status == 4) {
+                route = "selesai/" + id ;
+            }
+            // console.log(monitoring, id, status);
+            $.ajax({
+                method: "GET",
+                url: route,
+                data: {
+                    // '_token': '{{ csrf_token() }}',
+                    'monitoring' : monitoring
+                },
+                success:function(data){
+                // updateStatus(monitoring, id, status);
+                },
+                error: function(error) {
+                    alert('Terjadi kesalahan saat memperbarui status');
+                }
+            });
             }
         }
     })

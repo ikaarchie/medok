@@ -80,6 +80,7 @@
                                 }else{
                                     html += ' (' + tracking[i]['ops_ket_makanan'] + ')';
                                 }
+                            html += '</td>';
                             html += '</tr>';
                             html += '<tr>';
                             html += '<th class="col-3">Minuman</th>';
@@ -89,6 +90,7 @@
                                 }else{
                                     html += ' (' + tracking[i]['ops_ket_minuman'] + ')';
                                 }
+                            html += '</td>';
                             html += '</tr>';
                             html += '<tr>';
                             html += '<th class="col-3">Waktu pemesanan</th>';
@@ -105,7 +107,8 @@
                             html += '</div>';
                             
                             // html += '<div class="text-center align-middle">';
-                            // html += `<a href="{{ route('selesai_dokter', '') }}/${tracking[i]['id']}" class="${tracking[i]['sedang_diantar'] !== null ? 'btn selesai' : 'btn tombolmati'}"><b>Selesaikan pesanan</b></a>`;
+                            // html += `<a href="{{ route('selesai_dokter', '') }}/${tracking[i]['id']}" class="${tracking[i]['sedang_diantar'] !== null && tracking[i]['selesai'] === null ? 'btn selesai' : 'btn tombolmati'}"><b>Selesaikan pesanan</b></a>`;
+                            // html += '</div>';
                             // html += '</div>';
                             // html += '</div>';
 
