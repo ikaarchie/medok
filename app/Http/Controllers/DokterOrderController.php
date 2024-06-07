@@ -233,4 +233,11 @@ class DokterOrderController extends Controller
 
         return view('dokterorder.tracking', compact('dokter', 'tracking'));
     }
+
+    public function print($id)
+    {
+        $data = DokterOrder::where('id', $id)->get();
+
+        return view('master.print')->with('data', $data);
+    }
 }

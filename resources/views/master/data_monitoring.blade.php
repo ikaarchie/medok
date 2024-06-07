@@ -18,16 +18,20 @@
                     <th scope="col">Sedang Diantar</th>
                     <th scope="col">Selesai</th>
                     <th scope="col">Status Saat Ini</th>
-                    {{-- <th scope="col">Aksi</th> --}}
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item,index) in monitoring">
+                <tr v-for="(item,index) in monitoring" class="font-tabel">
                     <td>@{{ index + 1 }}</td>
                     <td>@{{ item.nama }}</td>
-                    <td>@{{ item.makanan }} @{{ item.ket_makanan }}</br>(@{{ item.ops_ket_makanan }})</td>
-                    <td>@{{ item.minuman }} @{{ item.ket_minuman }}</br>(@{{ item.ops_ket_minuman }})</td>
-                    <td class="text-center">@{{ item.waktu_disajikan}}</br>@{{ item.tanggal_disajikan| tgl }}</td>
+                    <td>@{{ item.makanan }} @{{ item.ket_makanan }}</br>
+                        @{{ item.ops_ket_makanan !== null ? '(' + item.ops_ket_makanan + ')' : '' }}
+                    </td>
+                    <td>@{{ item.minuman }} @{{ item.ket_minuman }}</br>
+                        @{{ item.ops_ket_minuman !== null ? '(' + item.ops_ket_minuman + ')' : '' }}
+                    </td>
+                    <td class=" text-center">@{{ item.waktu_disajikan}}</br>@{{ item.tanggal_disajikan| tgl }}</td>
                     <td class="text-center">@{{ item.belum_diproses | jam}}</br>@{{ item.belum_diproses | tgl}}</td>
                     <td class="text-center">@{{ item.sedang_diproses | jam}}</br>@{{ item.sedang_diproses | tgl}}</td>
                     <td class="text-center">@{{ item.menunggu_pengantaran | jam}}</br>@{{ item.menunggu_pengantaran |
@@ -52,12 +56,17 @@
                     <td v-else class="text-center" style="background-color: #00C853;">
                         <b>@{{ item.status }}</b>
                     </td>
-                    {{-- <td class="text-center">
+                    <td class="text-center">
                         <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
-                            <a href="javascript:void(0)" @click="updateStatus(monitoring, +item.id, 4)"
+                            {{-- <a href="javascript:void(0)" @click="updateStatus(monitoring, +item.id, 4)"
                                 :class="`${item.sedang_diantar !== null && item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">Selesai</a>
+                            --}}
+                            <a :href="'{{ route('print', '') }}/' + item.id" class="btn btn-outline-success btn-sm"
+                                :id="item.id" target="print_frame">
+                                <i class="fa-solid fa-print"></i> Print label
+                            </a>
                         </div>
-                    </td> --}}
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -39,8 +39,12 @@
                 <tr v-for="(item,index) in monitoring">
                     <td>@{{ index + 1 }}</td>
                     <td>@{{ item.nama }}</td>
-                    <td>@{{ item.makanan }} @{{ item.ket_makanan }}</br>(@{{ item.ops_ket_makanan }})</td>
-                    <td>@{{ item.minuman }} @{{ item.ket_minuman }}</br>(@{{ item.ops_ket_minuman }})</td>
+                    <td>@{{ item.makanan }} @{{ item.ket_makanan }}</br>
+                        @{{ item.ops_ket_makanan !== null ? '(' + item.ops_ket_makanan + ')' : '' }}
+                    </td>
+                    <td>@{{ item.minuman }} @{{ item.ket_minuman }}</br>
+                        @{{ item.ops_ket_minuman !== null ? '(' + item.ops_ket_minuman + ')' : '' }}
+                    </td>
                     <td class="text-center">@{{ item.waktu_disajikan}}</br>@{{ item.tanggal_disajikan| tgl }}</td>
                     <td class="text-center">@{{ item.belum_diproses | jam}}</br>@{{ item.belum_diproses | tgl}}</td>
                     <td v-if="item.status=='Belum Diproses'" class="text-center blink">

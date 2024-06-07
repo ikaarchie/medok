@@ -75,20 +75,28 @@
                             html += '<tr>';
                             html += '<th class="col-3">Makanan</th>';
                             html += '<td class="text-white">' + tracking[i]['makanan'];
-                                if (tracking[i]['ket_makanan'] !== null) {
+                                if (tracking[i]['ket_makanan'] !== null && tracking[i]['ops_ket_makanan'] !== null) {
                                     html += ' ' + tracking[i]['ket_makanan'] + ' (' + tracking[i]['ops_ket_makanan'] + ')';
-                                }else{
+                                } else if (tracking[i]['ket_makanan'] !== null && tracking[i]['ops_ket_makanan'] === null) {
+                                    html += ' ' + tracking[i]['ket_makanan'];
+                                } else if (tracking[i]['ket_makanan'] === null && tracking[i]['ops_ket_makanan'] !== null) {
                                     html += ' (' + tracking[i]['ops_ket_makanan'] + ')';
+                                }else {
+                                    html += '';
                                 }
                             html += '</td>';
                             html += '</tr>';
                             html += '<tr>';
                             html += '<th class="col-3">Minuman</th>';
                             html += '<td class="text-white">' + tracking[i]['minuman'];
-                                if (tracking[i]['ket_minuman'] !== null) {
+                                if (tracking[i]['ket_minuman'] !== null && tracking[i]['ops_ket_minuman'] !== null) {
                                     html += ' ' + tracking[i]['ket_minuman'] + ' (' + tracking[i]['ops_ket_minuman'] + ')';
-                                }else{
+                                } else if (tracking[i]['ket_minuman'] !== null && tracking[i]['ops_ket_minuman'] === null) {
+                                    html += ' ' + tracking[i]['ket_minuman'];
+                                } else if (tracking[i]['ket_minuman'] === null && tracking[i]['ops_ket_minuman'] !== null) {
                                     html += ' (' + tracking[i]['ops_ket_minuman'] + ')';
+                                }else {
+                                    html += '';
                                 }
                             html += '</td>';
                             html += '</tr>';
