@@ -48,6 +48,10 @@ class DokterOrderController extends Controller
             $list_dokter[$doctor->nama] = $doctor->nama;
         }
 
+        $currentTime = now();
+        $minTime = $currentTime->copy()->addMinutes(30)->format('H:i');
+        $minDate = $currentTime->copy()->addMinutes(30)->format('Y-m-d');
+
         $makanan = Master::where([['jenis', 'Makanan'], ['status', 'Tersedia']])->orderBy('item', 'ASC')->get();
         $list_makanan =  [];
         foreach ($makanan as $makan) {
@@ -74,7 +78,7 @@ class DokterOrderController extends Controller
 
         $order_list = DokterOrder::latest()->get();
 
-        return view('dokterorder.index', compact('list_dokter', 'list_makanan', 'list_minuman', 'ket_makanan', 'ket_minuman'));
+        return view('dokterorder.index', compact('list_dokter', 'minTime', 'minDate', 'list_makanan', 'list_minuman', 'ket_makanan', 'ket_minuman'));
     }
 
     public function save(Request $request)

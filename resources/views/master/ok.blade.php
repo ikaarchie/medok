@@ -3,7 +3,7 @@
 @section('content')
 <div class="header-waves">
     <div class="container pt-3">
-        <h1 class="text-center"><b>MONITORING</b></h1>
+        <h1 class="text-center"><b>MONITORING OK</b></h1>
         <h2 class="text-center">Rumah Sakit Hermina Banyumanik Semarang</h2>
     </div>
 

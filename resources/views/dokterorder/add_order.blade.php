@@ -20,9 +20,16 @@
                     <p>*Pemesanan minimal 30 menit sebelum waktu disajikan</p>
                 </div>
 
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                {{-- <div class="col-sm-12 mb-3 form-floating">
+                    {!! Form::datetimeLocal('waktu_disajikan', '', ['min' => $minTime, 'style' => 'height: auto',
+                    'class' => 'form-control', 'id' => 'waktu_disajikan', 'required']) !!}
+                    {!! Form::label('waktu_disajikan', 'Waktu disajikan') !!}
+                </div> --}}
+
+                {{-- <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <div class="col-sm-6 mb-3 form-floating">
-                        {!! Form::date('tanggal_disajikan', '', ['style' => 'height: auto', 'class' =>
+                        {!! Form::date('tanggal_disajikan', '', ['style' => 'height: auto', 'class'
+                        =>
                         'form-control',
                         'id' => 'tanggal_disajikan', 'required']) !!}
                         {!! Form::label('tanggal_disajikan', 'Tanggal disajikan') !!}
@@ -30,6 +37,23 @@
 
                     <div class="col-sm-6 mb-3 form-floating">
                         {!! Form::time('waktu_disajikan', '', ['style' => 'height: auto', 'class' =>
+                        'form-control',
+                        'id' => 'waktu_disajikan', 'required']) !!}
+                        {!! Form::label('waktu_disajikan', 'Jam disajikan') !!}
+                    </div>
+                </div> --}}
+
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <div class="col-sm-6 mb-3 form-floating">
+                        {!! Form::date('tanggal_disajikan', '', ['min' => $minDate, 'style' => 'height: auto', 'class'
+                        =>
+                        'form-control',
+                        'id' => 'tanggal_disajikan', 'required']) !!}
+                        {!! Form::label('tanggal_disajikan', 'Tanggal disajikan') !!}
+                    </div>
+
+                    <div class="col-sm-6 mb-3 form-floating">
+                        {!! Form::time('waktu_disajikan', '', ['min' => $minTime, 'style' => 'height: auto', 'class' =>
                         'form-control',
                         'id' => 'waktu_disajikan', 'required']) !!}
                         {!! Form::label('waktu_disajikan', 'Jam disajikan') !!}
