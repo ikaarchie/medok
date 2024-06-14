@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Events\DokterOrderCreated;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class DokterOrderController extends Controller
 {
@@ -83,6 +84,17 @@ class DokterOrderController extends Controller
 
     public function save(Request $request)
     {
+        // Tambahkan validasi
+        $validator = Validator::make($request->all(), [
+            'tanggal_disajikan' => 'required|date_format:Y-m-d|after_or_equal:' . now()->addMinutes(30)->format('Y-m-d'),
+            'waktu_disajikan' => 'required|date_format:H:i|after_or_equal:' . now()->addMinutes(30)->format('H:i'),
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Jika validasi berhasil, simpan data
         $data = new DokterOrder();
         $data->nama = $request->input('nama');
         $data->tanggal_disajikan = $request->input('tanggal_disajikan');
@@ -190,17 +202,17 @@ class DokterOrderController extends Controller
         return redirect('/tracking');
     }
 
-    public function selesai_admin(Request $request, $id)
-    {
-        $selesai = DokterOrder::where(['id' => $id])->first();
-        $selesai->status = 'Selesai';
-        $selesai->selesai = Carbon::now();
-        $selesai->save();
+    // public function selesai_admin(Request $request, $id)
+    // {
+    //     $selesai = DokterOrder::where(['id' => $id])->first();
+    //     $selesai->status = 'Selesai';
+    //     $selesai->selesai = Carbon::now();
+    //     $selesai->save();
 
-        DokterOrderCreated::dispatch();
+    //     DokterOrderCreated::dispatch();
 
-        return redirect('/monitoring');
-    }
+    //     return redirect('/monitoring');
+    // }
 
     public function monitoring(Request $request)
     {
@@ -219,6 +231,15 @@ class DokterOrderController extends Controller
             return response()->json(['monitoring' => $monitoring], 200);
         }
         return view('master.ok');
+    }
+
+    public function pantry(Request $request)
+    {
+        $monitoring = DokterOrder::latest()->get();
+        if ($request->expectsJson()) {
+            return response()->json(['monitoring' => $monitoring], 200);
+        }
+        return view('master.pantry');
     }
 
     public function tracking(Request $request)

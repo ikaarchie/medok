@@ -49,6 +49,15 @@ tbody {
     text-align: center;
 }
 
+.waves_pantry {
+    position: relative;
+    height: 4vh;
+    width: 100%;
+    margin-bottom: 0px;
+    min-height: 5px;
+    max-height: 100px;
+}
+
 .waves {
     position: relative;
     height: 8vh;
@@ -112,6 +121,13 @@ tbody {
     100% {
         -webkit-transform: translate3d(85px, 0, 0);
         transform: translate3d(85px, 0, 0);
+    }
+}
+
+@media (max-width : 400px) {
+    .waves_pantry {
+        height: 4vh;
+        min-height: 2px;
     }
 }
 

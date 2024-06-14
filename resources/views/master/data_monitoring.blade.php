@@ -82,13 +82,13 @@
     };
     const jam = function (str) {
         if (str != null) {
-            return moment(str).format("hh:mm");
+            return moment(str).format("HH:mm");
         }
         return "-";
     };
     const tglIndo = function (str) {
         if (str != null) {
-            return moment(str).format("DD/MM/YYYY hh:mm");
+            return moment(str).format("DD/MM/YYYY HH:mm");
         }
         return "-";
     };
