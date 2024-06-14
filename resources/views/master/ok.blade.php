@@ -14,6 +14,7 @@
                     <th scope="col" style="width: 8%">Waktu Disajikan</th>
                     <th scope="col" style="width: 8%">Waktu Pesanan</th>
                     <th scope="col" style="width: 11%">Status Saat Ini</th>
+                    <th scope="col" style="width: 8%">Ubah Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,6 +46,10 @@
                     </td>
                     <td v-else class="text-center" style="background-color: #00C853;">
                         <b>@{{ item.status }}</b>
+                    </td>
+                    <td class="text-center justify-content-center">
+                        <a href="javascript:void(0)" @click="updateStatus(monitoring, +item.id, 4)"
+                            :class="`${item.sedang_diantar !== null && item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">Selesai</a>
                     </td>
                 </tr>
             </tbody>
@@ -95,10 +100,11 @@
         },
         mounted() {
             this.getData();
+            this.updateStatus();
         },
         methods: {
             getData: function() {
-                let url = "{{ route('monitoringMaster') }}";
+                let url = "{{ route('monitoringOK') }}";
 
                 axios.get(url)
                 .then(resp => {
@@ -109,6 +115,38 @@
                     console.log(err);
                     alert('error');
                 })
+            },
+
+            updateStatus(monitoring, id, status)
+            {
+                var route = '';
+                if (status == 1) {
+                    route = "sedangdiproses/" + id ;
+                }
+                if (status == 2) {
+                    route = "menunggupengantaran/" + id ;
+                }
+                if (status == 3) {
+                    route = "sedangdiantar/" + id ;
+                }
+                if (status == 4) {
+                    route = "selesai/" + id ;
+                }
+                // console.log(monitoring, id, status);
+                $.ajax({
+                    method: "GET",
+                    url: route,
+                    data: {
+                        // '_token': '{{ csrf_token() }}',
+                        'monitoring' : monitoring
+                    },
+                    success:function(data){
+                    // updateStatus(monitoring, id, status);
+                    },
+                    error: function(error) {
+                        alert('Terjadi kesalahan saat memperbarui status');
+                    }
+                });
             }
         }
     })
