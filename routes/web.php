@@ -4,6 +4,7 @@ use App\Events\ServerCreated;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\DokterOkController;
 use App\Http\Controllers\DokterOrderController;
 
 /*
@@ -44,6 +45,10 @@ Route::get('/monitoring', [DokterOrderController::class, 'monitoring'])->name('m
 // Route::get('/selesai_admin/{id}', [DokterOrderController::class, 'selesai_admin'])->name('selesai_admin');
 
 Route::get('/ok', [DokterOrderController::class, 'ok'])->name('monitoringOK');
+Route::get('/dokter_ok', [DokterOkController::class, 'index'])->name('dokterOK');
+Route::post('/dokter_ok/add', [DokterOkController::class, 'add']);
+Route::patch('/dokter_ok/edit/{id}', [DokterOkController::class, 'edit'])->name('editDokterOk');
+Route::get('/dokter_ok/delete/{id}', [DokterOkController::class, 'delete'])->name('deleteDokterOk');
 
 Route::get('/pantry', [DokterOrderController::class, 'pantry'])->name('monitoringPantry');
 
