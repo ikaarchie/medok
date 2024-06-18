@@ -235,7 +235,7 @@ class DokterOrderController extends Controller
 
     public function pantry(Request $request)
     {
-        $monitoring = DokterOrder::latest()->get();
+        $monitoring = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
         if ($request->expectsJson()) {
             return response()->json(['monitoring' => $monitoring], 200);
         }
