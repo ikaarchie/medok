@@ -33,7 +33,8 @@
                     <th scope="col" style="width: 8%">Waktu Pesanan</th>
                     <th scope="col" style="width: 8%">Waktu Disajikan</th>
                     <th scope="col" style="width: 11%">Status Saat Ini</th>
-                    <th scope="col" style="width: 30%">Ubah Status</th>
+                    <th scope="col" style="width: 25%">Ubah Status</th>
+                    <th scope="col" style="width: 5%">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,21 +86,17 @@
 
                     <td class="text-center">
                         <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
-                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 1)" {{--
-                                :id="'sedangdiproses_'+index" --}}
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 1)"
                                 :class="`${item.sedang_diproses === null ? 'btn sedangdiproses' : 'btn tombolmati'}`">Sedang
                                 Diproses</a>
-                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 2)" {{--
-                                :id="'menunggupengantaran_'+index" --}}
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 2)"
                                 :class="`${item.menunggu_pengantaran === null ? 'btn menunggupengantaran' : 'btn tombolmati'}`">Menunggu
                                 Pengantaran</a>
-                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 3)" {{--
-                                :id="'sedangdiantar_'+index" --}}
+                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 3)"
                                 :class="`${item.sedang_diantar === null ? 'btn sedangdiantar' : 'btn tombolmati'}`">Sedang
                                 Diantar</a>
-                            <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 4)" {{--
-                                :id="'selesai_'+index" --}}
-                                :class="`${item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">Selesai</a>
+                            {{-- <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 4)"
+                                :class="`${item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">Selesai</a> --}}
                         </div>
                     </td>
 
@@ -116,6 +113,14 @@
                         </div>
                     </td> --}}
 
+                    <td class="text-center">
+                        <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
+                            <a :href="'{{ route('print', '') }}/' + item.id" class="btn btn-outline-success btn-sm"
+                                :id="item.id" target="print_frame">
+                                <b><i class="fa-solid fa-print"></i> Print label</b>
+                            </a>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

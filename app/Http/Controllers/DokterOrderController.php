@@ -26,8 +26,8 @@ class DokterOrderController extends Controller
         // }
 
         // cara 2
-        $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
-        // $order_list = DokterOrder::whereNotIn('status', ['Sedang Diantar', 'Selesai'])->latest()->get();
+        // $order_list = DokterOrder::where('status', '!=', 'Selesai')->latest()->get();
+        $order_list = DokterOrder::whereNotIn('status', ['Sedang Diantar', 'Selesai'])->latest()->get();
         if ($request->expectsJson()) {
             return response()->json(['order_list' => $order_list], 200);
         }
