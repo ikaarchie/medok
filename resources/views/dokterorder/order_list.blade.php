@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="header-waves">
-    <div class="container pt-3">
+    <h6 class="text-start">{{ request()->ip() }}</h6>
+    <div class="container">
         <h1 class="text-center"><b>DAFTAR PESANAN DOKTER</b></h1>
         <h2 class="text-center">Rumah Sakit Hermina Banyumanik Semarang</h2>
     </div>
@@ -33,12 +34,12 @@
                     <th scope="col" style="width: 8%">Waktu Pesanan</th>
                     <th scope="col" style="width: 8%">Waktu Disajikan</th>
                     <th scope="col" style="width: 11%">Status Saat Ini</th>
-                    <th scope="col" style="width: 25%">Ubah Status</th>
-                    <th scope="col" style="width: 5%">Aksi</th>
+                    <th scope="col" style="width: 30%">Ubah Status</th>
+                    <th scope="col" style="width: 5%">Print</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item,index) in order_list" class="align-middle">
+                <tr v-for="(item,index) in order_list" class="align-middle font-tabel">
                     <td>@{{ index + 1 }}</td>
                     <td>@{{ item.nama }}</td>
                     <td>@{{ item.makanan }} @{{ item.ket_makanan }}</br>
@@ -87,13 +88,13 @@
                     <td class="text-center">
                         <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
                             <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 1)"
-                                :class="`${item.sedang_diproses === null ? 'btn sedangdiproses' : 'btn tombolmati'}`">Sedang
+                                :class="`${item.sedang_diproses === null ? 'btn btn-sm sedangdiproses' : 'btn btn-sm tombolmati'}`">Sedang
                                 Diproses</a>
                             <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 2)"
-                                :class="`${item.menunggu_pengantaran === null ? 'btn menunggupengantaran' : 'btn tombolmati'}`">Menunggu
+                                :class="`${item.menunggu_pengantaran === null ? 'btn btn-sm menunggupengantaran' : 'btn btn-sm tombolmati'}`">Menunggu
                                 Pengantaran</a>
                             <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 3)"
-                                :class="`${item.sedang_diantar === null ? 'btn sedangdiantar' : 'btn tombolmati'}`">Sedang
+                                :class="`${item.sedang_diantar === null ? 'btn btn-sm sedangdiantar' : 'btn btn-sm tombolmati'}`">Sedang
                                 Diantar</a>
                             {{-- <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 4)"
                                 :class="`${item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">Selesai</a> --}}
@@ -117,7 +118,7 @@
                         <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
                             <a :href="'{{ route('print', '') }}/' + item.id" class="btn btn-outline-success btn-sm"
                                 :id="item.id" target="print_frame">
-                                <b><i class="fa-solid fa-print"></i> Print label</b>
+                                <b><i class="fa-solid fa-print"></i></b>
                             </a>
                         </div>
                     </td>

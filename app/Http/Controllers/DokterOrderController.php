@@ -38,7 +38,9 @@ class DokterOrderController extends Controller
         //     return response()->json(['order_list' => $order_list]);
         // }
 
-        return view('dokterorder.order_list', compact('order_list', 'makanan', 'minuman'));
+        $ipAddress = \Request::ip();
+
+        return view('dokterorder.order_list', compact('order_list', 'makanan', 'minuman', 'ipAddress'));
     }
 
     public function add()
@@ -258,6 +260,25 @@ class DokterOrderController extends Controller
 
         return view('dokterorder.tracking', compact('dokter', 'tracking'));
     }
+
+    // public function tracking_cara2(Request $request)
+    // {
+    //     $query = DokterOrder::query();
+    //     $dokter = DokterOrder::select('nama')->orderBy('nama', 'ASC')->distinct()->get();
+
+    //     if ($request->ajax()) {
+    //         // Memeriksa apakah filter dokter diterapkan
+    //         if ($request->has('dokter') && $request->dokter != '') {
+    //             $query->where('nama', $request->dokter);
+    //         }
+    //         $tracking = $query->orderBy('belum_diproses', 'DESC')->get();
+    //         return response()->json(['tracking' => $tracking], 200);
+    //     }
+
+    //     $tracking = $query->paginate(1000);
+
+    //     return view('dokterorder.tracking', compact('dokter', 'tracking'));
+    // }
 
     public function print($id)
     {
