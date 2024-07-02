@@ -116,8 +116,12 @@
 
                     <td class="text-center">
                         <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
-                            <a :href="'{{ route('print', '') }}/' + item.id" class="btn btn-outline-success btn-sm"
+                            {{-- <a :href="'{{ route('print', '') }}/' + item.id" class="btn btn-outline-success btn-sm"
                                 :id="item.id" target="print_frame">
+                                <b><i class="fa-solid fa-print"></i></b>
+                            </a> --}}
+
+                            <a href="#" class="btn btn-outline-success btn-sm" @click.prevent="printItem(item.id)">
                                 <b><i class="fa-solid fa-print"></i></b>
                             </a>
                         </div>
@@ -189,6 +193,34 @@
                             alert('Terjadi kesalahan saat memperbarui status');
                         }
                     });
+                },
+
+                printItem(itemId) {
+                    const printUrl = `{{ route('print', '') }}/${itemId}`;
+                    
+                    fetch(printUrl)
+                    .then(response => response.text())
+                    .then(html => {
+                        const printFrame = document.createElement('iframe');
+                        printFrame.style.position = 'absolute';
+                        printFrame.style.width = '0';
+                        printFrame.style.height = '0';
+                        printFrame.style.border = 'none';
+                        document.body.appendChild(printFrame);
+                        
+                        const printDocument = printFrame.contentWindow.document;
+                        printDocument.open();
+                        printDocument.write(html);
+                        printDocument.close();
+                        
+                        printFrame.contentWindow.focus();
+                        printFrame.contentWindow.print();
+                        
+                        setTimeout(() => {
+                            document.body.removeChild(printFrame);
+                        }, 1000);
+                    })
+                    .catch(error => console.error('Error:', error));
                 }
             }
         })
