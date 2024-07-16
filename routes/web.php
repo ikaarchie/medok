@@ -28,6 +28,7 @@ use App\Http\Controllers\DokterOrderController;
 Route::get('/dokterorder', [DokterOrderController::class, 'add'])->name('addDokterOrder');
 Route::post('/dokterorder/save', [DokterOrderController::class, 'save'])->name('saveDokterOrder');
 Route::get('/tracking', [DokterOrderController::class, 'tracking'])->name('trackingOrder');
+// Route::get('/tracking_cara2', [DokterOrderController::class, 'tracking_cara2'])->name('tracking_cara2');
 Route::get('/selesai_dokter/{id}', [DokterOrderController::class, 'selesai_dokter'])->name('selesai_dokter');
 
 // JURU MASAK

@@ -128,6 +128,14 @@
         });
     </script>
 
+    <script>
+        window.Echo.channel("messages").listen("DokterOrderCreated", (event) => {
+            // console.log(event);
+            // alert('sukses');
+            vueDataDokterOrder.getData();
+        });
+    </script>
+
     @endsection
 
     {{-- @extends('layouts.footer') --}}
