@@ -93,11 +93,11 @@
                 </div>
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">
-                    <i class="fa-solid fa-xmark"></i> Batal</button>
-                <button type="submit" class="btn btn-sm btn-success">
-                    <i class="fa-solid fa-check"></i> Simpan</button>
+            <div class="modal-footer justify-content-center align-items-center">
+                {{-- <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark"></i> Batal</button> --}}
+                <button type="submit" class="btn btn-lg btn-success">
+                    <strong><i class="fa-solid fa-check"></i> Simpan</strong></button>
                 {!! Form::close() !!}
             </div>
         </div>
