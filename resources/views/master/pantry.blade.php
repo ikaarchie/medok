@@ -87,12 +87,12 @@
             <div class="row justify-content-sm-center">
                 <div class="col-6 d-grid">
                     <a href="javascript:void(0)" @click="updateStatus(monitoring, +item.id, 3)"
-                        :class="`${item.menunggu_pengantaran !== null && item.sedang_diantar === null ? 'btn btn-sm sedangdiantar' : 'btn btn-sm tombolmati'}`">Sedang
+                        :class="`${item.sedang_diproses !== null && item.menunggu_pengantaran !== null && item.sedang_diantar === null && item.selesai === null ? 'btn btn-sm sedangdiantar' : 'btn btn-sm tombolmati'}`">Sedang
                         Diantar</a>
                 </div>
                 <div class="col-6 d-grid">
                     <a href="javascript:void(0)" @click="updateStatus(monitoring, +item.id, 4)"
-                        :class="`${item.menunggu_pengantaran !== null && item.selesai === null ? 'btn btn-sm selesai' : 'btn btn-sm tombolmati'}`">Selesai</a>
+                        :class="`${item.sedang_diproses !== null && item.menunggu_pengantaran !== null && item.sedang_diantar !== null && item.selesai === null ? 'btn btn-sm selesai' : 'btn btn-sm tombolmati'}`">Selesai</a>
                 </div>
             </div>
         </div>

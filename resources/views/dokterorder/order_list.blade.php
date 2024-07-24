@@ -88,13 +88,13 @@
                     <td class="text-center">
                         <div class="d-grid gap-1 d-sm-flex justify-content-sm-center">
                             <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 1)"
-                                :class="`${item.sedang_diproses === null ? 'btn btn-sm sedangdiproses' : 'btn btn-sm tombolmati'}`">Sedang
+                                :class="`${item.sedang_diproses === null && item.menunggu_pengantaran === null && item.sedang_diantar === null && item.selesai === null ? 'btn btn-sm sedangdiproses' : 'btn btn-sm tombolmati'}`">Sedang
                                 Diproses</a>
                             <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 2)"
-                                :class="`${item.menunggu_pengantaran === null ? 'btn btn-sm menunggupengantaran' : 'btn btn-sm tombolmati'}`">Menunggu
+                                :class="`${item.sedang_diproses !== null && item.menunggu_pengantaran === null && item.sedang_diantar === null && item.selesai === null ? 'btn btn-sm menunggupengantaran' : 'btn btn-sm tombolmati'}`">Menunggu
                                 Pengantaran</a>
                             <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 3)"
-                                :class="`${item.sedang_diantar === null ? 'btn btn-sm sedangdiantar' : 'btn btn-sm tombolmati'}`">Sedang
+                                :class="`${item.sedang_diproses !== null && item.menunggu_pengantaran !== null && item.sedang_diantar === null && item.selesai === null ? 'btn btn-sm sedangdiantar' : 'btn btn-sm tombolmati'}`">Sedang
                                 Diantar</a>
                             {{-- <a href="javascript:void(0)" @click="updateStatus(order_list, +item.id, 4)"
                                 :class="`${item.selesai === null ? 'btn selesai' : 'btn tombolmati'}`">Selesai</a> --}}
