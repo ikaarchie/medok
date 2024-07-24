@@ -132,7 +132,7 @@
     });
     
     minuman.addEventListener('change', function () {
-    if (['Kopi', 'Kopi Susu', 'Susu Coklat', 'Teh'].includes(minuman.value)) {
+    if ('<?php echo implode(', ', $ket_minuman); ?>'.split(', ').indexOf(minuman.value) !== -1) {
     ketMinuman.innerHTML = 
     `<div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="ket_minuman" id="dingin" value="dingin">
