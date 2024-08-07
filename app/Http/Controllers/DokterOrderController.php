@@ -88,8 +88,8 @@ class DokterOrderController extends Controller
     {
         // Tambahkan validasi
         $validator = Validator::make($request->all(), [
-            'tanggal_disajikan' => 'required|date_format:Y-m-d|after_or_equal:' . now()->addMinutes(30)->format('Y-m-d'),
-            'waktu_disajikan' => 'required|date_format:H:i|after_or_equal:' . now()->addMinutes(30)->format('H:i'),
+            'tanggal_disajikan' => 'required|date_format:Y-m-d|after_or_equal:' . Carbon::now()->addMinutes(30)->format('Y-m-d'),
+            'waktu_disajikan' => 'required|date_format:H:i|after_or_equal:' . Carbon::now()->addMinutes(30)->format('H:i'),
         ]);
 
         if ($validator->fails()) {
