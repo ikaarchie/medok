@@ -51,7 +51,7 @@ class DokterOrderController extends Controller
             $list_dokter[$doctor->nama] = $doctor->nama;
         }
 
-        $currentTime = now();
+        $currentTime = Carbon::now();
         $minTime = $currentTime->copy()->addMinutes(30)->format('H:i');
         $minDate = $currentTime->copy()->addMinutes(30)->format('Y-m-d');
 
