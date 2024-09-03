@@ -9,6 +9,7 @@ use App\Models\DokterOrder;
 use Illuminate\Http\Request;
 use App\Events\DokterOrderCreated;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
@@ -296,5 +297,24 @@ class DokterOrderController extends Controller
         $view = view('master.print', compact('data'))->render();
 
         return response($view);
+    }
+
+    public function tarikdata(Request $request)
+    {
+        $tgl_skg = date('Y-m-d');
+        $dari = date_create($request->input('dari'));
+        $sampai = date_create($request->input('sampai'));
+        $diff  = date_diff($dari, $sampai);
+        $range_tgl = $diff->d + 1;
+
+        if ($request->input('dari') <= $request->input('sampai')) {
+            $data = DokterOrder::whereDate('belum_diproses', '>=', $request->input('dari') ?? $tgl_skg)
+                ->whereDate('belum_diproses', '<=', $request->input('sampai') ?? $tgl_skg)
+                ->latest('id')->paginate(1000);
+
+            return view('master.tarik_data', compact('data', 'range_tgl'));
+        } else {
+            return Redirect::back()->withErrors(['msg' => 'Tanggal tidak boleh Lebih kecil dari sebelumnya']);
+        }
     }
 }

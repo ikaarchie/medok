@@ -45,6 +45,7 @@ Route::patch('/master/edit/{id}', [MasterController::class, 'update'])->name('ed
 Route::get('/master/delete/{id}', [MasterController::class, 'delete'])->name('deleteMaster');
 Route::get('/print/{id}', [DokterOrderController::class, 'print'])->name('print');
 Route::get('/monitoring', [DokterOrderController::class, 'monitoring'])->name('monitoringMaster');
+Route::get('/tarikdata', [DokterOrderController::class, 'tarikdata'])->name('tarikData');
 // Route::get('/selesai_admin/{id}', [DokterOrderController::class, 'selesai_admin'])->name('selesai_admin');
 Route::get('/dokter', [DokterController::class, 'index'])->name('indexDokter');
 Route::post('/dokter/add', [DokterController::class, 'add']);

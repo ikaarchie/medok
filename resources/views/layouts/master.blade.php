@@ -36,6 +36,10 @@
             <a class="nav-link {{ Request::is('monitoring') ? 'active' : '' }}"
                 href="{{ route('monitoringMaster') }}">Monitoring</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Request::is('tarikdata') ? 'active' : '' }}" href="{{ route('tarikData') }}">Tarik
+                Data</a>
+        </li>
     </ul>
 </div>
 
