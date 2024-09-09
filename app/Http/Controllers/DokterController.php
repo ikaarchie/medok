@@ -9,7 +9,7 @@ class DokterController extends Controller
 {
     public function index()
     {
-        $dokter = Dokter::latest()->paginate(1000);
+        $dokter = Dokter::orderBy('nama', 'ASC')->paginate(1000);
 
         return view('dokter.index', compact('dokter'));
     }
