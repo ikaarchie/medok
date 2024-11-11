@@ -71,7 +71,7 @@
             </tbody>
         </table>
 
-        <div v-for="(item,index) in order_list">
+        <div v-for="(item,index) in monitoring">
             <audio autoplay loop v-if="item.status=='Belum Diproses'">
                 <source src="../public/audio/oi.mp3" type="audio/mp3">
             </audio>
