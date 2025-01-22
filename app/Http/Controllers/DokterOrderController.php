@@ -6,8 +6,10 @@ use Carbon\Carbon;
 use App\Models\Dokter;
 use App\Models\Master;
 use App\Models\DokterOrder;
+use App\Models\Kuesioner;
 use Illuminate\Http\Request;
 use App\Events\DokterOrderCreated;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -44,7 +46,35 @@ class DokterOrderController extends Controller
         return view('dokterorder.order_list', compact('order_list', 'makanan', 'minuman', 'ipAddress'));
     }
 
-    public function add()
+    public function checkNama(Request $request)
+    {
+        $exists = Kuesioner::where('nama', $request->input('nama'))->exists();
+
+        return response()->json(['exists' => $exists]);
+    }
+
+    public function saveKuesioner(Request $request)
+    {
+        $data = new Kuesioner();
+        $data->nama = $request->input('nama');
+        $data->kepuasan_1 = $request->input('kepuasan_1');
+        $data->kepuasan_2 = $request->input('kepuasan_2');
+        $data->kepuasan_3 = $request->input('kepuasan_3');
+        $data->kepuasan_4 = $request->input('kepuasan_4');
+        $data->kepuasan_5 = $request->input('kepuasan_5');
+        $data->kepuasan_6 = $request->input('kepuasan_6');
+        $data->kepentingan_1 = $request->input('kepentingan_1');
+        $data->kepentingan_2 = $request->input('kepentingan_2');
+        $data->kepentingan_3 = $request->input('kepentingan_3');
+        $data->kepentingan_4 = $request->input('kepentingan_4');
+        $data->kepentingan_5 = $request->input('kepentingan_5');
+        $data->kepentingan_6 = $request->input('kepentingan_6');
+        $data->save();
+
+        return redirect('/dokterorder');
+    }
+
+    public function add(Request $request)
     {
         $dokter = Dokter::orderBy('nama', 'ASC')->get();
         $list_dokter =  [];

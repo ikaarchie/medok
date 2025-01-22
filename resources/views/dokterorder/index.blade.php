@@ -38,9 +38,16 @@
                     class="fa-solid fa-truck-fast"></i><b> Cek Status Pesanan</b></a>
         </div>
     </div>
+    @include('dokterorder.kuesioner')
     @include('dokterorder.add_order')
     @include('sweetalert::alert')
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('#kuesionerModal').modal('show');
+  });
+</script>
 @endsection
 
 @extends('layouts.footer_blur')
