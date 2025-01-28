@@ -48,6 +48,7 @@ Route::get('/master/delete/{id}', [MasterController::class, 'delete'])->name('de
 Route::get('/print/{id}', [DokterOrderController::class, 'print'])->name('print');
 Route::get('/monitoring', [DokterOrderController::class, 'monitoring'])->name('monitoringMaster');
 Route::get('/tarikdata', [DokterOrderController::class, 'tarikdata'])->name('tarikData');
+Route::get('/tarikdata/excel/', [DokterOrderController::class, 'excel'])->name('tarikDataExcel');
 // Route::get('/selesai_admin/{id}', [DokterOrderController::class, 'selesai_admin'])->name('selesai_admin');
 Route::get('/dokter', [DokterController::class, 'index'])->name('indexDokter');
 Route::post('/dokter/add', [DokterController::class, 'add']);

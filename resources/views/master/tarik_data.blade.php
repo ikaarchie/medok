@@ -15,13 +15,11 @@
                     class="form-control input-sm" style="border-color: #E91E63" required />
             </div>
 
-            <div class="col-sm-3 text-center">
+            <div class="col-sm-2 text-center">
                 <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>
                     Search</button>
-                {{-- <button formaction="{{ route('excelCuciTangan') }}" class="btn btn-success" type="submit">
+                <button formaction="{{ route('tarikDataExcel') }}" class="btn btn-success" type="submit">
                     <i class="fa-solid fa-table"></i> Excel</button>
-                <button formaction="{{ route('pdfCuciTangan') }}" class="btn btn-danger" type="submit">
-                    <i class="fa-solid fa-file-pdf"></i> PDF</button> --}}
             </div>
         </div>
         @if($errors->any())
