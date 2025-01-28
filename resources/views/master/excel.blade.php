@@ -31,8 +31,8 @@
                     echo "<tr>";
                     echo "<td>" . $no++ . "</td>";
                     echo "<td>" . $item['nama'] . "</td>";
-                    echo "<td>" . $item['makanan'] . " " . $item['ket_makanan'] . "</td>";
-                    echo "<td>" . $item['minuman'] . " " . $item['ket_minuman'] . "</td>";
+                    echo "<td>" . $item['makanan'] . " " . $item['ket_makanan'] . " " . ($item['ops_ket_makanan'] !== null ? "(" . $item['ops_ket_makanan'] . ")" : "") . "</td>";
+                    echo "<td>" . $item['minuman'] . " " . $item['ket_minuman'] . " " . ($item['ops_ket_minuman'] !== null ? "(" . $item['ops_ket_minuman'] . ")" : "") . "</td>";
                     echo "<td>" . $item['waktu_disajikan'] . " " . $item['tanggal_disajikan'] . "</td>";
                     echo "<td>" . $item['belum_diproses'] . "</td>";
                     echo "<td>" . $item['sedang_diproses'] . "</td>";

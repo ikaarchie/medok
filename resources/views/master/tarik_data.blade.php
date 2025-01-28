@@ -56,10 +56,10 @@
                     <td>{{ $data->firstItem() + $key }}</td>
                     <td>{{ $isi->nama }}</td>
                     <td>{{ $isi->makanan }} {{ $isi->ket_makanan }}</br>
-                        {{ $isi->ops_ket_makanan !== null ? $isi->ops_ket_makanan : '' }}
+                        {{ $isi->ops_ket_makanan !== null ? '(' . $isi->ops_ket_makanan . ')' : '' }}
                     </td>
                     <td>{{ $isi->minuman }} {{ $isi->ket_minuman }}</br>
-                        {{ $isi->ops_ket_minuman !== null ? $isi->ops_ket_minuman : '' }}
+                        {{ $isi->ops_ket_minuman !== null ? '(' . $isi->ops_ket_minuman . ')' : '' }}
                     </td>
                     <td class=" text-center">{{ $isi->waktu_disajikan}}</br>
                         {{ \Carbon\Carbon::parse($isi->tanggal_disajikan)->format('d/m/Y') }}
