@@ -30,8 +30,8 @@ Route::post('/dokterorder/save', [DokterOrderController::class, 'save'])->name('
 Route::get('/tracking', [DokterOrderController::class, 'tracking'])->name('trackingOrder');
 // Route::get('/tracking_cara2', [DokterOrderController::class, 'tracking_cara2'])->name('tracking_cara2');
 Route::get('/selesai_dokter/{id}', [DokterOrderController::class, 'selesai_dokter'])->name('selesai_dokter');
-Route::post('/check-nama', [DokterOrderController::class, 'checkNama'])->name('check_nama');
-Route::post('/dokterorder/saveKuesioner', [DokterOrderController::class, 'saveKuesioner'])->name('saveKuesioner');
+// Route::post('/check-nama', [DokterOrderController::class, 'checkNama'])->name('check_nama');
+// Route::post('/dokterorder/saveKuesioner', [DokterOrderController::class, 'saveKuesioner'])->name('saveKuesioner');
 
 // JURU MASAK
 Route::get('/orderlist', [DokterOrderController::class, 'index'])->name('listDokterOrder');
