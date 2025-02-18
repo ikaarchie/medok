@@ -64,3 +64,9 @@ Route::get('/dokter_ok', [DokterOkController::class, 'index'])->name('dokterOK')
 Route::post('/dokter_ok/add', [DokterOkController::class, 'add']);
 Route::patch('/dokter_ok/edit/{id}', [DokterOkController::class, 'edit'])->name('editDokterOk');
 Route::get('/dokter_ok/delete/{id}', [DokterOkController::class, 'delete'])->name('deleteDokterOk');
+
+Route::get('/kuesioner', [DokterOrderController::class, 'kuesioner'])->name('dataKuesioner');
+Route::get('/kepuasan', [DokterOrderController::class, 'kepuasan'])->name('dataKepuasan');
+Route::get('/kepentingan', [DokterOrderController::class, 'kepentingan'])->name('dataKepentingan');
+Route::get('/hasil', [DokterOrderController::class, 'hasil'])->name('dataHasil');
+Route::get('/csi', [DokterOrderController::class, 'csi'])->name('dataCsi');

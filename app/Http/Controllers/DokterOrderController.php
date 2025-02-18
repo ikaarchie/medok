@@ -55,6 +55,170 @@ class DokterOrderController extends Controller
         return response()->json(['exists' => $exists]);
     }
 
+    public function kuesioner(Request $request)
+    {
+        $kuesioner = Kuesioner::orderBy('nama', 'ASC')->paginate(1000);
+
+        return view('kuesioner.kuesioner', compact('kuesioner'));
+    }
+
+    public function kepuasan()
+    {
+        // Ambil data kepuasan dengan pagination
+        $kepuasan = Kuesioner::orderBy('nama', 'ASC')->paginate(1000);
+
+        // Mapping nilai kepuasan_1 hingga kepuasan_6 menjadi angka
+        $kepuasan->getCollection()->transform(function ($item) {
+            // Mapping setiap kepuasan (kepuasan_1, kepuasan_2, dll.)
+            for ($i = 1; $i <= 6; $i++) {
+                $item->{'kepuasan_' . $i} = match ($item->{'kepuasan_' . $i}) {
+                    'Sangat Puas' => 1,
+                    'Puas' => 2,
+                    'Cukup Puas' => 3,
+                    'Tidak Puas' => 4,
+                    'Sangat Tidak Puas' => 5,
+                    default => 'Tidak Ada Penilaian',
+                };
+            }
+
+            return $item;
+        });
+
+        // Menghitung total nilai kepuasan_1
+        $totalKepuasanA1 = $kepuasan->sum(function ($isi) {
+            return $isi->kepuasan_1 ?? 0; // Ambil nilai kepuasan_1 yang sudah dimodifikasi (nilai numerik)
+        });
+
+        $totalKepuasanA2 = $kepuasan->sum(function ($isi) {
+            return $isi->kepuasan_2 ?? 0;
+        });
+
+        $totalKepuasanA3 = $kepuasan->sum(function ($isi) {
+            return $isi->kepuasan_3 ?? 0;
+        });
+
+        $totalKepuasanA4 = $kepuasan->sum(function ($isi) {
+            return $isi->kepuasan_4 ?? 0;
+        });
+
+        $totalKepuasanA5 = $kepuasan->sum(function ($isi) {
+            return $isi->kepuasan_5 ?? 0;
+        });
+
+        $totalKepuasanA6 = $kepuasan->sum(function ($isi) {
+            return $isi->kepuasan_6 ?? 0;
+        });
+
+        // Menghitung jumlah data
+        $jumlahKepuasan = $kepuasan->count();
+
+        // Menghitung rata-rata kepuasan_1
+        $rataRataKepuasanA1 = round(($jumlahKepuasan > 0 ? $totalKepuasanA1 / $jumlahKepuasan : 0), 2);
+        $rataRataKepuasanA2 = round(($jumlahKepuasan > 0 ? $totalKepuasanA2 / $jumlahKepuasan : 0), 2);
+        $rataRataKepuasanA3 = round(($jumlahKepuasan > 0 ? $totalKepuasanA3 / $jumlahKepuasan : 0), 2);
+        $rataRataKepuasanA4 = round(($jumlahKepuasan > 0 ? $totalKepuasanA4 / $jumlahKepuasan : 0), 2);
+        $rataRataKepuasanA5 = round(($jumlahKepuasan > 0 ? $totalKepuasanA5 / $jumlahKepuasan : 0), 2);
+        $rataRataKepuasanA6 = round(($jumlahKepuasan > 0 ? $totalKepuasanA6 / $jumlahKepuasan : 0), 2);
+
+        return view('kuesioner.kepuasan', compact('kepuasan', 'totalKepuasanA1', 'totalKepuasanA2', 'totalKepuasanA3', 'totalKepuasanA4', 'totalKepuasanA5', 'totalKepuasanA6', 'rataRataKepuasanA1', 'rataRataKepuasanA2', 'rataRataKepuasanA3', 'rataRataKepuasanA4', 'rataRataKepuasanA5', 'rataRataKepuasanA6'));
+    }
+
+    public function kepentingan()
+    {
+        $kepentingan = Kuesioner::orderBy('nama', 'ASC')->paginate(1000);
+
+        $kepentingan->getCollection()->transform(function ($item) {
+            for ($i = 1; $i <= 6; $i++) {
+                $item->{'kepentingan_' . $i} = match ($item->{'kepentingan_' . $i}) {
+                    'Sangat Penting' => 1,
+                    'Penting' => 2,
+                    'Cukup Penting' => 3,
+                    'Tidak Penting' => 4,
+                    'Sangat Tidak Penting' => 5,
+                    default => 'Tidak Ada Penilaian',
+                };
+            }
+
+            return $item;
+        });
+
+        $totalKepentinganA1 = $kepentingan->sum(function ($isi) {
+            return $isi->kepentingan_1 ?? 0;
+        });
+
+        $totalKepentinganA2 = $kepentingan->sum(function ($isi) {
+            return $isi->kepentingan_2 ?? 0;
+        });
+
+        $totalKepentinganA3 = $kepentingan->sum(function ($isi) {
+            return $isi->kepentingan_3 ?? 0;
+        });
+
+        $totalKepentinganA4 = $kepentingan->sum(function ($isi) {
+            return $isi->kepentingan_4 ?? 0;
+        });
+
+        $totalKepentinganA5 = $kepentingan->sum(function ($isi) {
+            return $isi->kepentingan_5 ?? 0;
+        });
+
+        $totalKepentinganA6 = $kepentingan->sum(function ($isi) {
+            return $isi->kepentingan_6 ?? 0;
+        });
+
+        $jumlahKepentingan = $kepentingan->count();
+
+        $rataRataKepentinganA1 = round(($jumlahKepentingan > 0 ? $totalKepentinganA1 / $jumlahKepentingan : 0), 2);
+        $rataRataKepentinganA2 = round(($jumlahKepentingan > 0 ? $totalKepentinganA2 / $jumlahKepentingan : 0), 2);
+        $rataRataKepentinganA3 = round(($jumlahKepentingan > 0 ? $totalKepentinganA3 / $jumlahKepentingan : 0), 2);
+        $rataRataKepentinganA4 = round(($jumlahKepentingan > 0 ? $totalKepentinganA4 / $jumlahKepentingan : 0), 2);
+        $rataRataKepentinganA5 = round(($jumlahKepentingan > 0 ? $totalKepentinganA5 / $jumlahKepentingan : 0), 2);
+        $rataRataKepentinganA6 = round(($jumlahKepentingan > 0 ? $totalKepentinganA6 / $jumlahKepentingan : 0), 2);
+
+        return view('kuesioner.kepentingan', compact('kepentingan', 'totalKepentinganA1', 'totalKepentinganA2', 'totalKepentinganA3', 'totalKepentinganA4', 'totalKepentinganA5', 'totalKepentinganA6', 'rataRataKepentinganA1', 'rataRataKepentinganA2', 'rataRataKepentinganA3', 'rataRataKepentinganA4', 'rataRataKepentinganA5', 'rataRataKepentinganA6'));
+    }
+
+    public function hasil()
+    {
+        // Memanggil function kepuasan
+        $kepuasan = $this->kepuasan();
+        $kepentingan = $this->kepentingan();
+        // dd($kepentingan->rataRataKepentinganA6);
+
+        $rataRataKepuasanA1 = $kepuasan->rataRataKepuasanA1;
+        $rataRataKepuasanA2 = $kepuasan->rataRataKepuasanA2;
+        $rataRataKepuasanA3 = $kepuasan->rataRataKepuasanA3;
+        $rataRataKepuasanA4 = $kepuasan->rataRataKepuasanA4;
+        $rataRataKepuasanA5 = $kepuasan->rataRataKepuasanA5;
+        $rataRataKepuasanA6 = $kepuasan->rataRataKepuasanA6;
+
+        $rataRataKepentinganA1 = $kepentingan->rataRataKepentinganA1;
+        $rataRataKepentinganA2 = $kepentingan->rataRataKepentinganA2;
+        $rataRataKepentinganA3 = $kepentingan->rataRataKepentinganA3;
+        $rataRataKepentinganA4 = $kepentingan->rataRataKepentinganA4;
+        $rataRataKepentinganA5 = $kepentingan->rataRataKepentinganA5;
+        $rataRataKepentinganA6 = $kepentingan->rataRataKepentinganA6;
+
+        $perkalianA1 = round(($rataRataKepentinganA1 * $rataRataKepuasanA1), 2);
+        $perkalianA2 = round(($rataRataKepentinganA2 * $rataRataKepuasanA2), 2);
+        $perkalianA3 = round(($rataRataKepentinganA3 * $rataRataKepuasanA3), 2);
+        $perkalianA4 = round(($rataRataKepentinganA4 * $rataRataKepuasanA4), 2);
+        $perkalianA5 = round(($rataRataKepentinganA5 * $rataRataKepuasanA5), 2);
+        $perkalianA6 = round(($rataRataKepentinganA6 * $rataRataKepuasanA6), 2);
+
+        return view('kuesioner.hasil', compact('rataRataKepuasanA1', 'rataRataKepuasanA2', 'rataRataKepuasanA3', 'rataRataKepuasanA4', 'rataRataKepuasanA5', 'rataRataKepuasanA6', 'rataRataKepentinganA1', 'rataRataKepentinganA2', 'rataRataKepentinganA3', 'rataRataKepentinganA4', 'rataRataKepentinganA5', 'rataRataKepentinganA6', 'perkalianA1', 'perkalianA2', 'perkalianA3', 'perkalianA4', 'perkalianA5', 'perkalianA6'));
+    }
+
+    public function csi()
+    {
+        $hasil = $this->hasil();
+        // dd($hasil);
+        $t = $hasil->perkalianA1 + $hasil->perkalianA2 + $hasil->perkalianA3 + $hasil->perkalianA4 + $hasil->perkalianA5 + $hasil->perkalianA6;
+        $y = $hasil->rataRataKepentinganA1 + $hasil->rataRataKepentinganA2 + $hasil->rataRataKepentinganA3 + $hasil->rataRataKepentinganA4 + $hasil->rataRataKepentinganA5 + $hasil->rataRataKepentinganA6;
+
+        return view('kuesioner.csi', compact('t', 'y'));
+    }
+
     public function saveKuesioner(Request $request)
     {
         $data = new Kuesioner();

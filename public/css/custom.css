@@ -182,6 +182,37 @@ footer {
 }
 
 /* STICKY HEADER */
+.tbl-fixed-kues {
+    overflow-y: auto;
+    overflow-x: scroll;
+}
+
+.container-kues {
+    overflow-x: auto;
+}
+
+.table-kues {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+.sticky-kues {
+    background: #E91E63;
+    text-align: center;
+    padding: 10px;
+    white-space: nowrap;
+    /* Mencegah teks melambung ke baris berikutnya */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    /* max-width: 150px; */
+    /* Sesuaikan lebar kolom, bisa disesuaikan sesuai kebutuhan */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
 .tbl-fixed {
     height: 65vh;
     overflow-y: scroll;
@@ -192,6 +223,7 @@ footer {
     top: 0px;
     background: #E91E63;
 }
+
 
 /* hide scrollbar for chrome, safari, opera */
 body::-webkit-scrollbar {
