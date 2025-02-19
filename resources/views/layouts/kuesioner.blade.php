@@ -29,12 +29,12 @@
                 href="{{ route('dataKuesioner') }}">Kuesioner</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ Request::is('kepuasan') ? 'active' : '' }}"
-                href="{{ route('dataKepuasan') }}">Importance</a>
+            <a class="nav-link {{ Request::is('kepentingan') ? 'active' : '' }}"
+                href="{{ route('dataKepentingan') }}">Importance</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ Request::is('kepentingan') ? 'active' : '' }}"
-                href="{{ route('dataKepentingan') }}">Performance</a>
+            <a class="nav-link {{ Request::is('kepuasan') ? 'active' : '' }}"
+                href="{{ route('dataKepuasan') }}">Performance</a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ Request::is('hasil') ? 'active' : '' }}" href="{{ route('dataHasil') }}">Result</a>

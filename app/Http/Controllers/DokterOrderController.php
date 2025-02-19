@@ -72,11 +72,11 @@ class DokterOrderController extends Controller
             // Mapping setiap kepuasan (kepuasan_1, kepuasan_2, dll.)
             for ($i = 1; $i <= 6; $i++) {
                 $item->{'kepuasan_' . $i} = match ($item->{'kepuasan_' . $i}) {
-                    'Sangat Puas' => 1,
-                    'Puas' => 2,
+                    'Sangat Puas' => 5,
+                    'Puas' => 4,
                     'Cukup Puas' => 3,
-                    'Tidak Puas' => 4,
-                    'Sangat Tidak Puas' => 5,
+                    'Tidak Puas' => 2,
+                    'Sangat Tidak Puas' => 1,
                     default => 'Tidak Ada Penilaian',
                 };
             }
@@ -130,11 +130,11 @@ class DokterOrderController extends Controller
         $kepentingan->getCollection()->transform(function ($item) {
             for ($i = 1; $i <= 6; $i++) {
                 $item->{'kepentingan_' . $i} = match ($item->{'kepentingan_' . $i}) {
-                    'Sangat Penting' => 1,
-                    'Penting' => 2,
+                    'Sangat Penting' => 5,
+                    'Penting' => 4,
                     'Cukup Penting' => 3,
-                    'Tidak Penting' => 4,
-                    'Sangat Tidak Penting' => 5,
+                    'Tidak Penting' => 2,
+                    'Sangat Tidak Penting' => 1,
                     default => 'Tidak Ada Penilaian',
                 };
             }
