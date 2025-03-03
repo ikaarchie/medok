@@ -70,11 +70,11 @@
                 <div id="ketMakanan" class="col-sm-12 mb-3 form-floating" style="display: none;">
                 </div>
 
-                <div class="col-sm-12 mb-3 form-floating">
+                {{-- <div class="col-sm-12 mb-3 form-floating">
                     {!! Form::text('ops_ket_makanan', '', ['style' => 'height: auto', 'class' =>
                     'form-control', 'id' => 'ops_ket_makanan', 'placeholder' => '-']) !!}
                     {!! Form::label('ops_ket_makanan', 'Keterangan makanan (opsional)') !!}
-                </div>
+                </div> --}}
 
                 <div class="col-sm-12 mb-3 form-floating">
                     {!! Form::select('minuman', $list_minuman, '', ['style' => 'height: auto', 'class' =>
