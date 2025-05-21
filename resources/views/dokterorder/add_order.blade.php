@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                {!! Form::open(['url' => 'dokterorder/save']) !!}
+                {!! Form::open(['url' => 'dokterorder/save', 'id' => 'add_order']) !!}
                 {!! Form::hidden('id') !!}
 
                 <div class="col-sm-12 mb-3 form-floating">
@@ -70,11 +70,16 @@
                 <div id="ketMakanan" class="col-sm-12 mb-3 form-floating" style="display: none;">
                 </div>
 
-                {{-- <div class="col-sm-12 mb-3 form-floating">
+                <div class="col-sm-12 form-floating">
                     {!! Form::text('ops_ket_makanan', '', ['style' => 'height: auto', 'class' =>
                     'form-control', 'id' => 'ops_ket_makanan', 'placeholder' => '-']) !!}
                     {!! Form::label('ops_ket_makanan', 'Keterangan makanan (opsional)') !!}
-                </div> --}}
+                </div>
+
+                <div class="col-sm-12 mb-3">
+                    <small id="peringatan_makanan" style="color: red; display: none;">Telur dapat dipilih pada pilihan
+                        makanan.</small>
+                </div>
 
                 <div class="col-sm-12 mb-3 form-floating">
                     {!! Form::select('minuman', $list_minuman, '', ['style' => 'height: auto', 'class' =>
@@ -86,10 +91,15 @@
                 <div id="ketMinuman" class="col-sm-12 mb-3 form-floating" style="display: none;">
                 </div>
 
-                <div class="col-sm-12 mb-3 form-floating">
+                <div class="col-sm-12 form-floating">
                     {!! Form::text('ops_ket_minuman', '', ['style' => 'height: auto', 'class' =>
                     'form-control', 'id' => 'ops_ket_minuman', 'placeholder' => '-']) !!}
                     {!! Form::label('ops_ket_minuman', 'Keterangan minuman (opsional)') !!}
+                </div>
+
+                <div class="col-sm-12 mb-3">
+                    <small id="peringatan_minuman" style="color: red; display: none;">Telur dapat dipilih pada pilihan
+                        makanan.</small>
                 </div>
             </div>
 
@@ -149,4 +159,51 @@
     ketMinuman.style.display = 'block';
     });
 });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('add_order');
+        const keyword = ['telur', 'telor', 'tlor', 'tlur', 'tlr', 'egg'];
+
+        const fields = [
+            { textarea: document.getElementById('ops_ket_makanan'), warning: document.getElementById('peringatan_makanan') },
+            { textarea: document.getElementById('ops_ket_minuman'), warning: document.getElementById('peringatan_minuman') }
+        ];
+
+        function cekKataTerlarang(teks) {
+            teks = teks.toLowerCase();
+            return keyword.some(kata => teks.includes(kata));
+        }
+
+        // Realtime warning saat mengetik
+        fields.forEach(field => {
+            field.textarea.addEventListener('input', function () {
+                if (cekKataTerlarang(field.textarea.value)) {
+                    field.warning.style.display = 'block';
+                } else {
+                    field.warning.style.display = 'none';
+                }
+            });
+        });
+
+        // Cek semua saat submit
+        form.addEventListener('submit', function (e) {
+            let adaKesalahan = false;
+
+            fields.forEach(field => {
+                const teks = field.textarea.value;
+                if (cekKataTerlarang(teks)) {
+                    field.warning.style.display = 'block';
+                    adaKesalahan = true;
+                } else {
+                    field.warning.style.display = 'none';
+                }
+            });
+
+            if (adaKesalahan) {
+                e.preventDefault(); // Cegah submit
+            }
+        });
+    });
 </script>

@@ -283,10 +283,26 @@ class DokterOrderController extends Controller
 
     public function save(Request $request)
     {
+        $terlarang = ['telur', 'telor', 'tlor', 'tlur', 'tlr', 'egg'];
+
         // Tambahkan validasi
         $validator = Validator::make($request->all(), [
             'tanggal_disajikan' => 'required|date_format:Y-m-d|after_or_equal:' . Carbon::now()->addMinutes(30)->format('Y-m-d'),
             'waktu_disajikan' => 'required|date_format:H:i|after_or_equal:' . Carbon::now()->addMinutes(30)->format('H:i'),
+            'ops_ket_makanan' => ['nullable', function ($attribute, $value, $fail) use ($terlarang) {
+                foreach ($terlarang as $kata) {
+                    if (stripos($value, $kata) !== false) {
+                        $fail("Kolom $attribute mengandung kata '$kata' yang tidak diizinkan.");
+                    }
+                }
+            }],
+            'ops_ket_minuman' => ['nullable', function ($attribute, $value, $fail) use ($terlarang) {
+                foreach ($terlarang as $kata) {
+                    if (stripos($value, $kata) !== false) {
+                        $fail("Kolom $attribute mengandung kata '$kata' yang tidak diizinkan.");
+                    }
+                }
+            }],
         ]);
 
         if ($validator->fails()) {
