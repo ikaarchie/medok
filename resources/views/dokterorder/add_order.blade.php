@@ -77,8 +77,9 @@
                 </div>
 
                 <div class="col-sm-12 mb-3">
-                    <small id="peringatan_makanan" style="color: red; display: none;">Telur dapat dipilih pada pilihan
-                        makanan.</small>
+                    <small id="peringatan_makanan"
+                        style="background-color: red; color: white; padding: 5px; border-radius: 4px; display: none;">
+                        <strong>Telur dapat dipilih pada pilihan makanan.</strong></small>
                 </div>
 
                 <div class="col-sm-12 mb-3 form-floating">
@@ -98,8 +99,9 @@
                 </div>
 
                 <div class="col-sm-12 mb-3">
-                    <small id="peringatan_minuman" style="color: red; display: none;">Telur dapat dipilih pada pilihan
-                        makanan.</small>
+                    <small id="peringatan_minuman"
+                        style="background-color: red; color: white; padding: 5px; border-radius: 4px; display: none;">
+                        <strong>Telur dapat dipilih pada pilihan makanan.</strong></small>
                 </div>
             </div>
 
