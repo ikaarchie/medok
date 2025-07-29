@@ -166,7 +166,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('add_order');
-        const keyword = ['telur', 'telor', 'tlor', 'tlur', 'tlr', 'egg'];
+        const keyword = ['telur', 'telor', 'tel0r', 'tlor', 'tl0r', 'tlur', 'tlr', 'egg', 'ndog', 'nd0g', 'endog', 'end0g'];
 
         const fields = [
             { textarea: document.getElementById('ops_ket_makanan'), warning: document.getElementById('peringatan_makanan') },
