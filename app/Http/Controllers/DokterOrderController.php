@@ -304,7 +304,26 @@ class DokterOrderController extends Controller
             't e l u r',
             'lor',
             'lur',
-            'l0r'
+            'l0r',
+            'ur',
+            'or',
+            '0r',
+            'telr',
+            'ee',
+            'eee',
+            'eeee',
+            'uu',
+            'uuu',
+            'uuuu',
+            'oo',
+            'ooo',
+            'oooo',
+            '00',
+            '000',
+            '0000',
+            'rr',
+            'rrr',
+            'rrrr'
         ];
 
         // Tambahkan validasi

@@ -166,8 +166,48 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('add_order');
-        const keyword = ['telur', 'telor', 'tel0r', 'tlor', 'tl0r', 'tlur', 'tlr', 'egg', 'ndog', 'nd0g', 'endog', 'end0g', 'dog', 'd0g', 'tel', 't e l o r',
-        't e l 0 r', 't e l u r', 'lor', 'lur', 'l0r'];
+        const keyword = [
+        'telur',
+        'telor',
+        'tel0r',
+        'tlor',
+        'tl0r',
+        'tlur',
+        'tlr',
+        'egg',
+        'ndog',
+        'nd0g',
+        'endog',
+        'end0g',
+        'dog',
+        'd0g',
+        'tel',
+        't e l o r',
+        't e l 0 r',
+        't e l u r',
+        'lor',
+        'lur',
+        'l0r',
+        'ur',
+        'or',
+        '0r',
+        'telr',
+        'ee',
+        'eee',
+        'eeee',
+        'uu',
+        'uuu',
+        'uuuu',
+        'oo',
+        'ooo',
+        'oooo',
+        '00',
+        '000',
+        '0000',
+        'rr',
+        'rrr',
+        'rrrr'
+        ];
 
         const fields = [
             { textarea: document.getElementById('ops_ket_makanan'), warning: document.getElementById('peringatan_makanan') },
