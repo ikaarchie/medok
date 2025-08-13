@@ -283,7 +283,29 @@ class DokterOrderController extends Controller
 
     public function save(Request $request)
     {
-        $terlarang = ['telur', 'telor', 'tel0r', 'tlor', 'tl0r', 'tlur', 'tlr', 'egg', 'ndog', 'nd0g', 'endog', 'end0g'];
+        $terlarang = [
+            'telur',
+            'telor',
+            'tel0r',
+            'tlor',
+            'tl0r',
+            'tlur',
+            'tlr',
+            'egg',
+            'ndog',
+            'nd0g',
+            'endog',
+            'end0g',
+            'dog',
+            'd0g',
+            'tel',
+            't e l o r',
+            't e l 0 r',
+            't e l u r',
+            'lor',
+            'lur',
+            'l0r'
+        ];
 
         // Tambahkan validasi
         $validator = Validator::make($request->all(), [
